@@ -1,0 +1,139 @@
+% CHAPTER 3
+\chapter{Datasets and Metrics}
+\label{chp:datasets_and_metrics}
+
+\section{Datasets}
+
+\subsection{SFU Gray Ball}
+
+Ciurea and Funt~\cite{sfuGrayBall} published a dataset that they recorded a two hour video with a camrecorder whose model is Sony VX-2000 in 2003. The group mounted a matte gray ball to the right bottom of the camera perspective. The gray ball enables us to extract the information about the illumination in the environment. The dataset consists 11,346 frames with 360x240 resolution from the two hour video that is taken both indoor and outdoor. However, the frames are highly correlated due to being a frame from a sequence of the video. In addition, the images of the dataset are stored as non-linear and gamma corrected. A linearized version of reduced subset of 1,135 independent frames are used for evaluation.
+
+\subsection{Cube++}
+
+Ershov et al.~\cite{ershov2020cube} published a dataset with 4,890 raw 18-megapixel images that extends its predecessors Cube and Cube+. All images are captured with two cameras, Canon EOS 550D and 600D, which have the same sensor. The scenes of the dataset includes variety of both indoor and outdoor environments. SpyderCube is used for the extracting the information about the illumination of the environment.
+
+\subsection{Shi's Re-processing of Gehler's Raw Dataset }
+
+The Shi-Gehler dataset, is also named as ColorChecker Dataset, originally introduced by Gehler et al. \cite{gehler2008bayesian} and later reprocessed into linear form by Shi and Funt \cite{shi2010reprocessed}, is the most used dataset for the evaluation of illumination estimation studies. It contains 56 images from the camera Canon 1D and 482 images from the camera Canon 5D sum to 568 indoor and outdoor images. The scenes contain Macbeth ColorChecker for extracting the information of the light source in the scene. In 2018, Hemrit et al. ~\cite{Hemrit2018ColorCheckerError} figured out that the extraction of ground truth illumination has mistakes and proposed a rehabilitated version of the dataset.
+
+\subsection{NUS8}
+
+The NUS 8-camera dataset \cite{cheng2014illuminant} was designed to examine the cross-camera behavior of illuminant estimation algorithms. It consists 1,736 linear raw images that are taken in roughly 260 scenes, meaning that the dataset has approximately 210 images per camera. The dataset uses Macbeth ColorChecker to extract information about the light sources of the scene.
+
+\subsection{LSMI}
+
+The Large Scale Multi-Illuminant (LSMI) dataset \cite{kim2021lsmi} contains 7,486 images of more than 2,700 scenes illuminated by two or three light sources and captured by three different cameras ((Samsung Galaxy Note 20 Ultra, Sony $\alpha$9, and Nikon D810). The dataset provides pixel-wise ground-truth illumination maps together with the chromaticity of each individual illuminant and the per-pixel mixing ratio between them. The ground truth is obtained by capturing the same scene under different illumination combinations and computing the difference between the resulting images. Therefore, LSMI serves as a key resource for developing and evaluating spatially varying white-balance algorithms.
+
+\subsection{INTEL-TAU}
+
+Laakom et al.~\cite{intelTAU} published the INTEL-TAU dataset, which was the largest publicly available high-resolution dataset for illumination estimation at the time of its release. It consists of 7,022 images collected with three different camera sensors, Canon 5DSR, Nikon D810 and the mobile phone sensor Sony IMX135, and is organized into three subsets of 1,466 indoor, 2,327 outdoor and 3,229 close-up scenes. A SpyderCube color target, which exposes two gray surfaces facing different directions together with two white surfaces, is placed in each scene; the gray surfaces yield two separate ground truth illuminant records per image corresponding to the two directions, while the white surfaces are used to detect over-saturation. The dataset also applies privacy masking to sensitive content such as faces, making it compliant with the General Data Protection Regulation (GDPR).
+
+\subsection{MIMO}
+
+Beigpour et al.~\cite{mimoAndConditionalRandomFields} published the Multi-Illuminant Multi-Object (MIMO) dataset, which consists of 78 images captured under two non-uniformly distributed illuminants, split between a Laboratory set of controlled scenes and a Real-World set of everyday indoor and outdoor scenes containing simple and complex diffuse and specular objects. Unlike the datasets discussed above, every image, of size $302 \times 452$, is accompanied by a pixel-wise ground truth illumination image that stores the illuminant RGB vector for every pixel of the scene rather than a single global illuminant or a small number of per-region illuminants, which makes the dataset suitable for evaluating spatially varying illumination estimation methods directly at the pixel level.
+
+\subsection{Rendered WB Dataset}
+
+Afifi et al.~\cite{afifiRenderedWB} published the Rendered WB dataset together with a method for correcting improperly white-balanced camera-rendered sRGB images, since such images have already been non-linearly processed by the camera pipeline and no longer preserve the raw sensor values needed by the classical illuminant estimation methods. The dataset consists of more than 65,000 pairs of images, each pair containing a scene rendered with an incorrect camera white balance setting alongside the same scene correctly white-balanced, spanning multiple camera models so that the generalization of a correction method to a camera unseen during training can be evaluated directly. Because the pairs are defined at the level of the final sRGB output rather than the raw illuminant chromaticity, the dataset targets the correction of white balance errors introduced anywhere in the camera rendering pipeline, rather than only the estimation of the scene illuminant itself.
+
+\subsection{sRGB-LSMI}
+
+Serrano-Lozano et al.~\cite{revisitingImageFusionRenderedWB} built the sRGB-LSMI dataset for the multi-illuminant image fusion task by repurposing the raw images of the LSMI dataset~\cite{kim2021lsmi}. Each raw scene is rendered into an sRGB image under five different white balance presets, resulting in more than 16,000 images that are used to train and evaluate fusion based white balance correction methods, which combine the differently rendered versions of the same image into the final corrected result. Unlike LSMI, whose ground truth is the raw pixel-wise illuminant chromaticity of the scene, the ground truth of sRGB-LSMI is the multi-illuminant white-balanced sRGB image itself, obtained in two steps: first, the white-balanced version of the single-illuminant image is computed using the color checker references of LSMI, then the per-pixel brightness of this corrected image is adjusted with an auto white balance corrected version of the original multi-illuminant image.
+
+\subsection{Multi Illumination In The Wild}
+
+Murmann et al.~\cite{multiIlluminationInTheWild} published a large-scale dataset of real, in-the-wild indoor scenes, each captured under 25 different lighting directions rather than a single fixed illuminant, containing more than 1,000 scenes for a total of over 25,000 high dynamic range images. Unlike the datasets discussed above, which provide one or a small number of ground truth illuminants for an otherwise static scene, this dataset varies the direction and the appearance of the light source itself across the captures of the same scene, which makes it suitable not only for illumination estimation but also for image relighting and mixed-illuminant white balance research.
+
+\section{Metrics}
+
+\subsection{Recovery Angular Error}
+
+In the study of illumination estimation, the chromaticity of the light source is the important thing rather than the brightness of the light source. Because the incorrect thing about the captured image is chromatic tint. As a result, the metric compares the estimated chromaticity of the light source with the true chromaticity of the light source without considering the brightness. The evaluation is applied as the angle between the RGB vector of estimated light source and the RGB vector of true light source with the formula Eq.~\ref{eq:recovery_angular_error}.
+
+\begin{equation}
+    \epsilon_{recovery} = \arccos\left(\frac{L_{est} \cdot L_{gt}}{\norm{L_{est}} \norm{L_{gt}}}\right) \frac{180}{\pi}
+    \label{eq:recovery_angular_error}
+\end{equation}
+
+The term $L_{est}$ and $L_{gt}$ represent the RGB vector of the estimated light source and the RGB vector of the true light source respectively.
+
+\subsection{Reproduction Angular Error}
+
+Finlayson et al.~\cite{finlaysonReproductionAngularError} proposed a new perspective to the evaluation with angular error in 2014. Accepting that a white surface reflects the light as it is, a white surface must have the same chromaticity with the true light source. As a result, the surface must be achromatic after applying von Kries as explained in the section~\ref{sec:von_kries_coefficient_law}.
+
+For a specific angular error value, there are infinite number of RGB vectors for the estimated light source with respect to the RGB vector of true light source. However, all of these vectors will give different chromaticities for a corrected white surface.
+
+The authors state that evaluating by using the angle between the RGB vector of corrected white surface and the desired achromatic RGB vector. The formula forms as in Eq.~\ref{eq:reproduction_angular_error}.
+
+\begin{equation}
+    \epsilon_{reproduction} = \arccos\left(\frac{\frac{L_{gt}}{L_{est}} \cdot \begin{bmatrix} 1 & 1 & 1 \end{bmatrix}^T} {\norm{\frac{L_{gt}}{L_{est}}} \norm{\begin{bmatrix} 1 & 1 & 1 \end{bmatrix}^T}}\right) \frac{180}{\pi}
+    \label{eq:reproduction_angular_error}
+\end{equation}
+
+The term $L_{est}$ and $L_{gt}$ represent the RGB vector of the estimated light source and the RGB vector of the true light source respectively and the division is element-wise. Here, the $L_{gt}$ is the chromaticity of a white surface that reflects the true light source as it is.
+
+\subsection{Mean Angular Error}
+
+Extending the illumination estimation study from global illumination to spatially varying illumination requires evaluating the errors as pixel-wise. Therefore, we extend the recovery angular error and the reproduction angular error by taking the average of errors per pixels of the estimated illumination map and the true illumination map. The evaluation formulas for mean recovery angular error and mean reproduction error is in Eq.~\ref{eq:mean_recovery_angular_error} and Eq.~\ref{eq:mean_reproduction_angular_error} respectively.
+
+\begin{equation}
+    \epsilon_{\mu,recovery} = \frac{1}{\norm{\mathcal{P}}}\sum_{p\in\mathcal{P}}{\arccos\left(\frac{I_{p,est} \cdot I_{p,gt}}{\norm{I_{p,est}} \norm{I_{p,gt}}}\right) \frac{180}{\pi}}
+    \label{eq:mean_recovery_angular_error}
+\end{equation}
+
+\begin{equation}
+    \epsilon_{\mu,reproduction} = \frac{1}{\norm{\mathcal{P}}}\sum_{p\in\mathcal{P}}{\arccos\left(\frac{\frac{I_{p,gt}}{I_{p,est}} \cdot \begin{bmatrix} 1 & 1 & 1 \end{bmatrix}^T} {\norm{\frac{I_{p,gt}}{I_{p,est}}} \norm{\begin{bmatrix} 1 & 1 & 1 \end{bmatrix}^T}}\right) \frac{180}{\pi}}
+    \label{eq:mean_reproduction_angular_error}
+\end{equation}
+
+The term $I_{p,est}$ and $I_{p,gt}$ represent the RGB vector of the pixel $p$ of the estimated illumination map and the RGB vector of the pixel $p$ of the true illumination map respectively.
+
+\subsection{$\mathbf{\Delta}$E2000}
+Both of the angular error metrics measure the deviation between two RGB vectors in the device dependent sensor space, which is not perceptually uniform. Consequently, two estimations having exactly the same angular error may produce color distortions of very different magnitude for a human observer, depending on the region of the color space they fall into. Since the ultimate purpose of the illumination estimation is to obtain an image that looks correct to a human, an evaluation that is aligned with the human perception is also required. For this purpose, we use the CIEDE2000 color difference formula~\cite{luoDevelopmentCIEDE2000}, which is defined in the CIELAB color space and which weights the lightness, the chroma and the hue differences separately in order to compensate the perceptual non-uniformity of the CIELAB space.
+
+Let $(L^*_1, a^*_1, b^*_1)$ and $(L^*_2, a^*_2, b^*_2)$ denote the CIELAB coordinates of the two colors that are compared. The formula first modifies the $a^*$ axis so that the neutral colors are handled consistently, as given in Eq.~\ref{eq:ciede2000_primes}.
+\begin{equation}
+    \begin{gathered}
+        C^*_i = \sqrt{a^{*2}_i + b^{*2}_i}, \quad \bar{C}^* = \frac{C^*_1 + C^*_2}{2}, \quad
+        G = \frac{1}{2}\left(1 - \sqrt{\frac{\bar{C}^{*7}}{\bar{C}^{*7} + 25^7}}\right) \\
+        a'_i = (1 + G)\,a^*_i, \quad C'_i = \sqrt{a'^2_i + b^{*2}_i}, \quad h'_i = \arctan_2\left(b^*_i, a'_i\right)
+    \end{gathered}
+    \label{eq:ciede2000_primes}
+\end{equation}
+The lightness, chroma and hue differences are then computed as in Eq.~\ref{eq:ciede2000_differences}, where the hue difference is expressed as a chord length so that it is comparable with the other two terms.
+\begin{equation}
+    \Delta L' = L^*_2 - L^*_1, \quad
+    \Delta C' = C'_2 - C'_1, \quad
+    \Delta H' = 2\sqrt{C'_1 C'_2}\sin\left(\frac{\Delta h'}{2}\right)
+    \label{eq:ciede2000_differences}
+\end{equation}
+The weighting functions $S_L$, $S_C$ and $S_H$ scale these differences according to the position of the color pair in the space, and the rotation term $R_T$ accounts for the interaction between the chroma and the hue differences in the blue region, as formulated in Eq.~\ref{eq:ciede2000_weights}.
+\begin{equation}
+    \begin{gathered}
+        S_L = 1 + \frac{0.015\left(\bar{L}' - 50\right)^2}{\sqrt{20 + \left(\bar{L}' - 50\right)^2}}, \quad
+        S_C = 1 + 0.045\,\bar{C}', \quad
+        S_H = 1 + 0.015\,\bar{C}'T \\
+        T = 1 - 0.17\cos\left(\bar{h}' - 30^\circ\right) + 0.24\cos\left(2\bar{h}'\right) + 0.32\cos\left(3\bar{h}' + 6^\circ\right) - 0.20\cos\left(4\bar{h}' - 63^\circ\right) \\
+        R_T = -2\sqrt{\frac{\bar{C}'^7}{\bar{C}'^7 + 25^7}}\,\sin\left(60^\circ\exp\left(-\left(\frac{\bar{h}' - 275^\circ}{25}\right)^2\right)\right)
+    \end{gathered}
+    \label{eq:ciede2000_weights}
+\end{equation}
+The terms $\bar{L}'$, $\bar{C}'$ and $\bar{h}'$ are the arithmetic means of the corresponding values of the two colors, the mean hue being taken with respect to the $360^\circ$ wrap-around. Finally, the color difference is obtained as in Eq.~\ref{eq:ciede2000}, where the parametric factors are set to $k_L = k_C = k_H = 1$ for the reference viewing conditions.
+\begin{equation}
+    \Delta E_{00} = \sqrt{\left(\frac{\Delta L'}{k_L S_L}\right)^2 + \left(\frac{\Delta C'}{k_C S_C}\right)^2 + \left(\frac{\Delta H'}{k_H S_H}\right)^2 + R_T\frac{\Delta C'}{k_C S_C}\frac{\Delta H'}{k_H S_H}}
+    \label{eq:ciede2000}
+\end{equation}
+
+Following the same reasoning with the reproduction angular error, we apply the metric on a white surface that is corrected by the estimated light source. The corrected white surface is mapped to the CIELAB space and it is compared with the reference white, which is the desired appearance of that surface. The evaluation is given in Eq.~\ref{eq:delta_e2000_error}.
+\begin{equation}
+    \epsilon_{\Delta E} = \Delta E_{00}\left(\Phi\left(\frac{L_{gt}}{L_{est}}\right), \Phi\left(\begin{bmatrix} 1 & 1 & 1 \end{bmatrix}^T\right)\right)
+    \label{eq:delta_e2000_error}
+\end{equation}
+The term $\Phi(\cdot)$ denotes the transformation from the linear RGB values to the CIELAB coordinates, which is performed through the CIE XYZ space with the D65 reference white, and the division is element-wise. Since the brightness of the light source is not a part of the estimation problem, the corrected white surface is normalized to have the same luminance with the reference white before the transformation. In this way the lightness difference $\Delta L'$ vanishes and only the chromatic deviation contributes to the reported error.
+
+As in the case of the angular errors, the metric is extended to the spatially varying illumination by averaging the color difference over the pixels of the illumination map, as formulated in Eq.~\ref{eq:mean_delta_e2000_error}.
+\begin{equation}
+    \epsilon_{\mu,\Delta E} = \frac{1}{\norm{\mathcal{P}}}\sum_{p\in\mathcal{P}}{\Delta E_{00}\left(\Phi\left(\frac{I_{p,gt}}{I_{p,est}}\right), \Phi\left(\begin{bmatrix} 1 & 1 & 1 \end{bmatrix}^T\right)\right)}
+    \label{eq:mean_delta_e2000_error}
+\end{equation}
+The term $I_{p,est}$ and $I_{p,gt}$ represent the RGB vector of the pixel $p$ of the estimated illumination map and the RGB vector of the pixel $p$ of the true illumination map respectively.

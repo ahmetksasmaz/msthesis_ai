@@ -1,0 +1,708 @@
+@article{gray_world,
+title = {A spatial processor model for object colour perception},
+journal = {Journal of the Franklin Institute},
+volume = {310},
+number = {1},
+pages = {1-26},
+year = {1980},
+issn = {0016-0032},
+doi = {https://doi.org/10.1016/0016-0032(80)90058-7},
+url = {https://www.sciencedirect.com/science/article/pii/0016003280900587},
+author = {G. Buchsbaum},
+abstract = {A comprehensive mathematical model to account for colour constancy is formulated. Since the visual system is able to measure true object colour in complex scenes under a broad range of spectral compositions, for the illumination; it is assumed that the visual system must implicitly estimate and illuminant. The basic hypothesis is that the estimate of the illuminant is made on the basis of spatial information from the entire visual field. This estimate is then used by the visual system to arrive at an estimate of the (object) reflectance of the various subfields in the complex visual scene. The estimates are made by matching the inputs to the system to linear combinations of fixed bases and standards in the colour space. The model provides a general unified mathematical framework for related psychophysical phenomenology.}
+}
+
+@article{retinex,
+  title={The retinex theory of color vision},
+  author={Land, Edwin H},
+  journal={Scientific american},
+  volume={237},
+  number={6},
+  pages={108--129},
+  year={1977},
+  publisher={JSTOR}
+}
+
+@article{white_patch,
+  title={Analysis of the retinex theory of color vision},
+  author={Brainard, David H and Wandell, Brian A},
+  journal={Journal of the Optical Society of America A},
+  volume={3},
+  number={10},
+  pages={1651--1661},
+  year={1986},
+  publisher={Optical Society of America}
+}
+
+@inproceedings{shades_of_gray,
+  title={Shades of gray and colour constancy},
+  author={Finlayson, Graham D and Trezzi, Elisabetta},
+  booktitle={Color and imaging conference},
+  volume={12},
+  pages={37--41},
+  year={2004},
+  organization={Society of Imaging Science and Technology}
+}
+
+@article{gray_edge,
+  author={van de Weijer, Joost and Gevers, Theo and Gijsenij, Arjan},
+  journal={IEEE Transactions on Image Processing}, 
+  title={Edge-Based Color Constancy}, 
+  year={2007},
+  volume={16},
+  number={9},
+  pages={2207-2214},
+  keywords={Light sources;Object recognition;Image retrieval;Color;Reflectivity;Layout;Testing;Photometry;Computer vision;Application software;Color constancy;object recognition;photometric invariance},
+  doi={10.1109/TIP.2007.901808}}
+
+@inproceedings{bright_pixels,
+  title={The role of bright pixels in illumination estimation},
+  author={Joze, Hamid Reza Vaezi and Drew, Mark S and Finlayson, Graham D and Rey, Perla Aurora Troncoso},
+  booktitle={Color and Imaging Conference},
+  volume={20},
+  pages={41--46},
+  year={2012},
+  organization={Society of Imaging Science and Technology}
+}
+
+@article{fast_wb_greyness,
+  title={A fast white balance algorithm based on pixel greyness},
+  author={Thai, Ba and Deng, Guang and Ross, Robert},
+  journal={Signal, Image and Video Processing},
+  volume={11},
+  number={3},
+  pages={525--532},
+  year={2017},
+  publisher={Springer}
+}
+
+@article{ranking_based_color_constancy,
+  title={Ranking-based color constancy with limited training samples},
+  author={Li, Bing and Qin, Haina and Xiong, Weihua and Li, Yangxi and Feng, Songhe and Hu, Weiming and Maybank, Stephen},
+  journal={IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  volume={45},
+  number={10},
+  pages={12304--12320},
+  year={2023},
+  publisher={IEEE}
+}
+
+@inproceedings{color_constancy_by_deep_learning,
+  title={Color Constancy by Deep Learning.},
+  author={Lou, Zhongyu and Gevers, Theo and Hu, Ninghang and Lucassen, Marcel P and others},
+  booktitle={BMVC},
+  volume={2},
+  pages={3},
+  year={2015}
+}
+
+@inproceedings{convolutional_color_constancy,
+  title={Convolutional color constancy},
+  author={Barron, Jonathan T},
+  booktitle={Proceedings of the IEEE International Conference on Computer Vision},
+  pages={379--387},
+  year={2015}
+}
+
+@book{reinhard2008color,
+  title={Color Imaging: Fundamentals and Applications},
+  author={Reinhard, E. and Khan, E.A. and Akyuz, A.O. and Johnson, G.},
+  isbn={9781439865200},
+  lccn={2007015704},
+  url={https://books.google.com.tr/books?id=suLqBgAAQBAJ},
+  year={2008},
+  publisher={CRC Press}
+}
+
+@ARTICLE{baseofgamut,
+  title     = "A novel algorithm for color constancy",
+  author    = "Forsyth, D A",
+  abstract  = "Color constancy is the skill by which it is possible to tell the
+               color of an object even under a colored light. I interpret the
+               color of an object as its color under a fixed canonical light,
+               rather than as a surface reflectance function. This leads to an
+               analysis that shows two distinct sets of circumstances under
+               which color constancy is possible. In this framework, color
+               constancy requires estimating the illuminant under which the
+               image was taken. The estimate is then used to choose one of a
+               set of linear maps, which is applied to the image to yield a
+               color descriptor at each point. This set of maps is computed in
+               advance.The illuminant can be estimated using image measurements
+               alone, because, given a number of weak assumptions detailed in
+               the text, the color of the illuminant is constrained by the
+               colors observed in the image. This constraint arises from the
+               fact that surfaces can reflect no more light than is cast on
+               them. For example, if one observes a patch that excites the red
+               receptor strongly, the illuminant cannot have been deep blue.Two
+               algorithms are possible using this constraint, corresponding to
+               different assumptions about the world. The first algorithm,
+               Crule will work for any surface reflectance. Crule corresponds
+               to a form of coefficient rule, but obtains the coefficients by
+               using constraints on illuminant color. The set of illuminants
+               for which Crule will be successful depends strongly on the
+               choice of photoreceptors: for narrowband photoreceptors, Crule
+               will work in an unrestricted world. The second algorithm, Mwext,
+               requires that both surface reflectances and illuminants be
+               chosen from finite dimensional spaces; but under these
+               restrictive conditions it can recover a large number of
+               parameters in the illuminant, and is not an attractive model of
+               human color constancy. Crule has been tested on real images of
+               Mondriaans, and works well. I show results for Crule and for the
+               Retinex algorithm of Land (Land 1971; Land 1983; Land 1985)
+               operating on a number of real images. The experimental work
+               shows that for good constancy, a color constancy system will
+               need to adjust the gain of the receptors it employs in a fashion
+               analagous to adaptation in humans.",
+  journal   = "Int. J. Comput. Vis.",
+  publisher = "Springer Science and Business Media LLC",
+  volume    =  5,
+  number    =  1,
+  pages     = "5--35",
+  month     =  aug,
+  year      =  1990,
+  language  = "en"
+}
+
+
+@INPROCEEDINGS{diagonal_chromatography,
+  author={Finlayson, G.D.},
+  booktitle={Proceedings of IEEE International Conference on Computer Vision}, 
+  title={Color constancy in diagonal chromaticity space}, 
+  year={1995},
+  volume={},
+  number={},
+  pages={218-223},
+  keywords={Lighting;Layout;Transmission line matrix methods;Cameras;Testing;Sensor systems;Heart;Vectors},
+  doi={10.1109/ICCV.1995.466783}}
+
+@incollection{maloney_wandell_recover_surface_spectral,
+title = {Color constancy: a method for recovering surface spectral reflectance},
+editor = {Martin A. Fischler and Oscar Firschein},
+booktitle = {Readings in Computer Vision},
+publisher = {Morgan Kaufmann},
+address = {San Francisco (CA)},
+pages = {293-297},
+year = {1987},
+isbn = {978-0-08-051581-6},
+doi = {https://doi.org/10.1016/B978-0-08-051581-6.50034-9},
+url = {https://www.sciencedirect.com/science/article/pii/B9780080515816500349},
+author = {Laurence T. Maloney and Brian A. Wandell},
+abstract = {Human and machine visual sensing is enhanced when surface properties of objects in scenes, including color, can be reliably estimated despite changes in the ambient lighting conditions. We describe a computational method for estimating surface spectral reflectance when the spectral power distribution of the ambient light is not known.}
+}
+
+@article{ershov2020cube,
+  author       = {Egor I. Ershov and
+                  Alexey Savchik and
+                  Illya Semenkov and
+                  Nikola Banic and
+                  Alexander Belokopytov and
+                  Daria Senshina and
+                  Karlo Koscevic and
+                  Marko Subasic and
+                  Sven Loncaric},
+  title        = {The Cube++ Illumination Estimation Dataset},
+  journal      = {CoRR},
+  volume       = {abs/2011.10028},
+  year         = {2020},
+  url          = {https://arxiv.org/abs/2011.10028},
+  eprinttype   = {arXiv},
+  eprint       = {2011.10028},
+  timestamp    = {Wed, 25 Nov 2020 16:34:14 +0100},
+  biburl       = {https://dblp.org/rec/journals/corr/abs-2011-10028.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+
+@inproceedings{gehler2008bayesian,
+author = {Gehler, Peter and Rother, Carsten and Blake, Andrew and Minka, Thomas and Sharp, Toby},
+year = {2008},
+month = {06},
+pages = {},
+title = {Bayesian Color Constancy Revisited},
+journal = {Proceedings of the IEEE Computer Society Conference on Computer Vision and Pattern Recognition (CVPR 2008), 1-8 (2008)},
+doi = {10.1109/CVPR.2008.4587765}
+}
+
+@misc{shi2010reprocessed, author = {Shi, Lilong and Funt, Brian}, title = {Re-processed Version of the {Gehler} Color Constancy Dataset of 568 Images}, howpublished = {\url{http://www.cs.sfu.ca/~colour/data/}}, year = {2010}, note = {Accessed: 2026-07-09} }
+
+
+@article{cheng2014illuminant,
+	abstract = {Color constancy is a well-studied topic in color vision. Methods are generally categorized as (1)\&\#xA0;low-level statistical methods, (2)\&\#xA0;gamut-based methods, and (3)\&\#xA0;learning-based methods. In this work, we distinguish methods depending on whether they work directly from color values (i.e., color domain) or from values obtained from the image\&\#x2019;s spatial information (e.g., image gradients/frequencies). We show that spatial information does not provide any additional information that cannot be obtained directly from the color distribution and that the indirect aim of spatial-domain methods is to obtain large color differences for estimating the illumination direction. This finding allows us to develop a simple and efficient illumination estimation method that chooses bright and dark pixels using a projection distance in the color distribution and then applies principal component analysis to estimate the illumination direction. Our method gives state-of-the-art results on existing public color constancy datasets as well as on our newly collected dataset (NUS dataset) containing 1736 images from eight different high-end consumer cameras.},
+	author = {Dongliang Cheng and Dilip K. Prasad and Michael S. Brown},
+	doi = {10.1364/JOSAA.31.001049},
+	journal = {J. Opt. Soc. Am. A},
+	keywords = {Cameras; Illumination; Color vision; Color, rendering and metamerism ; Color difference; Color vision; Illumination; Physiology; Spectral properties; Vision and color},
+	month = {May},
+	number = {5},
+	pages = {1049--1058},
+	publisher = {Optica Publishing Group},
+	title = {Illuminant estimation for color constancy: why spatial-domain methods work and the role of the color distribution},
+	url = {https://opg.optica.org/josaa/abstract.cfm?URI=josaa-31-5-1049},
+	volume = {31},
+	year = {2014},
+	bdsk-url-1 = {https://opg.optica.org/josaa/abstract.cfm?URI=josaa-31-5-1049},
+	bdsk-url-2 = {https://doi.org/10.1364/JOSAA.31.001049}}
+
+@inproceedings{kim2021lsmi,
+author = {Kim, Dongyoung and Kim, Jinwoo and Nam, Seonghyeon and Lee, Dongwoo and Lee, Yeonkyung and Kang, Nahyup and Lee, Hyong-Euk and Yoo, Byungin and Han, Jae Joon and Kim, Seon},
+year = {2021},
+month = {10},
+pages = {2390-2399},
+title = {Large Scale Multi-Illuminant (LSMI) Dataset for Developing White Balance Algorithm under Mixed Illumination},
+doi = {10.1109/ICCV48922.2021.00241}
+}
+
+@Inbook{MacAdamChromaticAdaptationVonKriesExplained1981,
+author="MacAdam, David L.",
+title="Chromatic Adaptation",
+bookTitle="Color Measurement: Theme and Variations",
+year="1981",
+publisher="Springer Berlin Heidelberg",
+address="Berlin, Heidelberg",
+pages="200--208",
+abstract="Monochrome television screens seen through windows from outdoors at night seem very blue, although when viewed indoors at normal distances their blueness is rarely remarked. This is caused by rapid, nearly complete adaptation of the observer, such that the quality of the illumination that prevails in the observer's field of view seems colorless and is his criterion for white. Outdoors at night, the prevailing illumination from street lamps or interior lighting seen through windows determines his adaptation and criterion for white. Relative to that criterion, the television screen, seen as a small, distant object, is definitely bluish. But viewed close up, the TV screen dominates our field of view, governs our adaptation, becomes our criterion for white, and (if it is a monochrome set) appears nearly colorless.",
+isbn="978-3-662-13508-2",
+doi="10.1007/978-3-662-13508-2_11",
+url="https://doi.org/10.1007/978-3-662-13508-2_11"
+}
+
+@inproceedings{finlaysonReproductionAngularError,
+author = {Finlayson, Graham and Zakizadeh, Roshanak},
+year = {2014},
+month = {09},
+pages = {},
+title = {Reproduction Angular Error: An Improved Performance Metric for Illuminant Estimation},
+doi = {10.13140/RG.2.1.4625.6806}
+}
+
+@inproceedings{sfuGrayBall,
+  title={A Large Image Database for Color Constancy Research},
+  author={Florian Ciurea and Brian V. Funt},
+  booktitle={International Conference on Communications in Computing},
+  year={2003},
+  url={https://api.semanticscholar.org/CorpusID:10395411}
+}
+
+@article{Hemrit2018ColorCheckerError,
+   title={Rehabilitating the ColorChecker Dataset for Illuminant Estimation},
+   volume={26},
+   ISSN={2166-9635},
+   url={http://dx.doi.org/10.2352/ISSN.2169-2629.2018.26.350},
+   DOI={10.2352/issn.2169-2629.2018.26.350},
+   number={1},
+   journal={Color and Imaging Conference},
+   publisher={Society for Imaging Science & Technology},
+   author={Hemrit, Ghalia and Finlayson, Graham D. and Gijsenij, Arjan and Gehler, Peter and Bianco, Simone and Funt, Brian and Drew, Mark and Shi, Lilong},
+   year={2018},
+   month=Nov, pages={350–353} }
+
+@inproceedings{luoDevelopmentCIEDE2000,
+author = {Luo, Ming},
+year = {2002},
+month = {06},
+pages = {554},
+title = {CIE 2000 color difference formula: CIEDE2000},
+volume = {4421},
+journal = {Color Research & Application},
+doi = {10.1117/12.464549}
+}
+
+@ARTICLE{weightedGrayEdge,
+  author={Gijsenij, Arjan and Gevers, Theo and van de Weijer, Joost},
+  journal={IEEE Transactions on Pattern Analysis and Machine Intelligence}, 
+  title={Improving Color Constancy by Photometric Edge Weighting}, 
+  year={2012},
+  volume={34},
+  number={5},
+  pages={918-929},
+  keywords={Lighting;Color;Image edge detection;Color constancy;illuminant estimation;Gray Edge;edge classification.},
+  doi={10.1109/TPAMI.2011.197}}
+
+@INPROCEEDINGS{yangGrayPixels,
+  author={Yang, Kai-Fu and Gao, Shao-Bing and Li, Yong-Jie},
+  booktitle={2015 IEEE Conference on Computer Vision and Pattern Recognition (CVPR)}, 
+  title={Efficient illuminant estimation for color constancy using grey pixels}, 
+  year={2015},
+  volume={},
+  number={},
+  pages={2254-2263},
+  keywords={Image color analysis;Estimation;Indexes;Light sources;Image edge detection;Benchmark testing;Standards},
+  doi={10.1109/CVPR.2015.7298838}}
+
+
+@article{qianFindingGrayPixels,
+  author       = {Yanlin Qian and
+                  Jarno Nikkanen and
+                  Joni{-}Kristian K{\"{a}}m{\"{a}}r{\"{a}}inen and
+                  Jiri Matas},
+  title        = {On Finding Gray Pixels},
+  journal      = {CoRR},
+  volume       = {abs/1901.03198},
+  year         = {2019},
+  url          = {http://arxiv.org/abs/1901.03198},
+  eprinttype   = {arXiv},
+  eprint       = {1901.03198},
+  timestamp    = {Fri, 01 Feb 2019 13:39:59 +0100},
+  biburl       = {https://dblp.org/rec/journals/corr/abs-1901-03198.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+@article{ebnerLocalSpaceAverageColor,
+
+author = {Ebner, Marc},
+
+title = {Color constancy based on local space average color},
+
+year = {2009},
+
+issue_date = {July      2009},
+
+publisher = {Springer-Verlag},
+
+address = {Berlin, Heidelberg},
+
+volume = {20},
+
+number = {5},
+
+issn = {0932-8092},
+
+abstract = {Light, which is reflected from an object, varies with the type of illuminant used. Nevertheless, the color of an object appears to be approximately constant to a human observer. The ability to compute color constant descriptors from reflected light, is called color constancy. In order to solve the problem of color constancy, some assumptions have to be made. One frequently made assumption is that on average, the world is gray. We address the problem of color constancy and focus on the use of space average color for color constancy. Instead of computing global space average color we suggest to use local space average color as the illuminant frequently varies across an image. We discuss several different methods on how to compute local space average color. The performance of the different algorithms as well as related algorithms is evaluated on an object recognition task. Algorithms based on local space average color are simple, yet highly effective for the problem of color constancy. Such algorithms are particularly suited for object recognition tasks.},
+
+journal = {Mach. Vision Appl.},
+
+month = jul,
+
+pages = {283–301},
+
+numpages = {19},
+
+keywords = {Color, Color constancy, Color perception, Object recognition, Reflectance, Space average color, Vision}
+
+}
+
+@ARTICLE{gaoDoubleOpponency,
+  author={Gao, Shao-Bing and Yang, Kai-Fu and Li, Chao-Yi and Li, Yong-Jie},
+  journal={IEEE Transactions on Pattern Analysis and Machine Intelligence}, 
+  title={Color Constancy Using Double-Opponency}, 
+  year={2015},
+  volume={37},
+  number={10},
+  pages={1973-1985},
+  keywords={Image color analysis;Radio frequency;Retina;Least squares approximations;Visualization;Biological system modeling;Neurons;color constancy;double opponency;human visual system;pooling mechanism;Color constancy;double opponency;human visual system;pooling mechanism},
+  doi={10.1109/TPAMI.2015.2396053}}
+
+@inproceedings{ulucanSalientPixels,
+author = {Ulucan, Oguzhan and Ulucan, Diclehan and Ebner, Marc},
+year = {2023},
+month = {05},
+pages = {},
+title = {Block-Based Color Constancy: The Deviation of Salient Pixels},
+doi = {10.1109/ICASSP49357.2023.10095198}
+}
+
+@article{ulucanMultiScaleSalient,
+author = {Ulucan, Oguzhan and Ulucan, Diclehan and Ebner, Marc},
+title = {Multi-scale color constancy based on salient varying local spatial statistics},
+year = {2023},
+issue_date = {Sep 2024},
+publisher = {Springer-Verlag},
+address = {Berlin, Heidelberg},
+volume = {40},
+number = {9},
+issn = {0178-2789},
+url = {https://doi.org/10.1007/s00371-023-03148-7},
+doi = {10.1007/s00371-023-03148-7},
+abstract = {The human visual system unconsciously determines the color of the objects by “discounting” the effects of the illumination, whereas machine vision systems have difficulty performing this task. Color constancy algorithms assist computer vision pipelines by removing the effects of the illuminant, which in the end enables these pipelines to perform better on high-level vision tasks based on the color features of the scene. Due to its benefits, numerous color constancy algorithms have been developed, and existing techniques have been improved. Combining different strategies and investigating new methods might help us design simple yet effective algorithms. Thereupon, we present a color constancy algorithm based on the outcomes of our previous works. Our algorithm is built upon the biological findings that the human visual system might be discounting the illuminant based on the highest luminance patches and space-average color. We find the illuminant estimate based on the idea that if the world is gray on average, the deviation of the brightest pixels from the achromatic value should be caused by the illuminant. Our approach utilizes multi-scale operations by only considering the salient pixels. It relies on varying surface orientations by adopting a block-based approach. We show that our strategy outperforms learning-free algorithms and provides competitive results compared to the learning-based methods. Moreover, we demonstrate that using parts of our strategy can significantly improve the performance of several learning-free methods. We also briefly present an approach to transform our global color constancy method into a multi-illuminant color constancy approach.},
+journal = {Vis. Comput.},
+month = dec,
+pages = {5979–5995},
+numpages = {17},
+keywords = {Computational color constancy, Illumination estimation, White-balancing, Scale-space}
+}
+
+@inproceedings{barnardGamutMappingImproved,
+author = {Barnard, Kobus},
+title = {Improvements to Gamut Mapping Colour Constancy Algorithms},
+year = {2000},
+isbn = {3540676856},
+publisher = {Springer-Verlag},
+address = {Berlin, Heidelberg},
+abstract = {In his paper we introduce two improvements to the three-dimensional gamut mapping approach to computational colour constancy. This approach consist of two separate parts. First the possible solutions are constrained. This part is dependent on the diagonal model of illumination change, which in turn, is a function of the camera sensors. In this work we propose a robust method for relaxing this reliance on the diagonal model. The second part of the gamut mapping paradigm is to choose a solution from the feasible set. Currently there are two general approaches for doing so. We propose a hybrid method which embodies the benefits of both, and generally performs better than either. We provide results using both generated data and a carefully calibrated set of 321 images. In the case of the modification for diagonal model failure, we provide synthetic results using two cameras with a distinctly different degree of support for the diagonal model. Here we verify that the new method does indeed reduce error due to the diagonal model. We also verify that the new method for choosing the solution offers significant improvement, both in the case of synthetic data and with real images.},
+booktitle = {Proceedings of the 6th European Conference on Computer Vision-Part I},
+pages = {390–403},
+numpages = {14},
+series = {ECCV '00}
+}
+
+@article{intelTAU,
+  title={Intel-tau: A color constancy dataset},
+  author={Laakom, Firas and Raitoharju, Jenni and Nikkanen, Jarno and Iosifidis, Alexandros and Gabbouj, Moncef},
+  journal={IEEE access},
+  volume={9},
+  pages={39560--39567},
+  year={2021},
+  publisher={IEEE}
+}
+
+@inproceedings{revisitingImageFusionRenderedWB,
+  title={Revisiting image fusion for multi-illuminant white-balance correction},
+  author={Serrano-Lozano, David and Arora, Aditya and Herranz, Luis and Derpanis, Konstantinos G and Brown, Michael S and Vazquez-Corral, Javier},
+  booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision},
+  pages={8275--8284},
+  year={2025}
+}
+
+@inproceedings{hu2017fc4,
+  title={Fc4: Fully convolutional color constancy with confidence-weighted pooling},
+  author={Hu, Yuanming and Wang, Baoyuan and Lin, Stephen},
+  booktitle={Proceedings of the IEEE conference on computer vision and pattern recognition},
+  pages={4085--4094},
+  year={2017}
+}
+
+@inproceedings{afifi2022autoWB,
+  title={Auto white-balance correction for mixed-illuminant scenes},
+  author={Afifi, Mahmoud and Brubaker, Marcus A and Brown, Michael S},
+  booktitle={Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision},
+  pages={1210--1219},
+  year={2022}
+}
+
+@inproceedings{barron2017fastFourier,
+  title={Fast fourier color constancy},
+  author={Barron, Jonathan T and Tsai, Yun-Ta},
+  booktitle={Proceedings of the IEEE conference on computer vision and pattern recognition},
+  pages={886--894},
+  year={2017}
+}
+
+@inproceedings{chang2025generativeColorConstancy,
+  title={Gcc: Generative color constancy via diffusing a color checker},
+  author={Chang, Chen-Wei and Fan, Cheng-De and Chang, Chia-Che and Lo, Yi-Chen and Tseng, Yu-Chee and Huang, Jiun-Long and Liu, Yu-Lun},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  pages={10868--10878},
+  year={2025}
+}
+
+@inproceedings{kim2024attentive,
+  title={Attentive illumination decomposition model for multi-illuminant white balancing},
+  author={Kim, Dongyoung and Kim, Jinwoo and Yu, Junsang and Kim, Seon Joo},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  pages={25512--25521},
+  year={2024}
+}
+
+@inproceedings{multiIlluminationInTheWild,
+  title={A dataset of multi-illumination images in the wild},
+  author={Murmann, Lukas and Gharbi, Michael and Aittala, Miika and Durand, Fredo},
+  booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision},
+  pages={4080--4089},
+  year={2019}
+}
+
+@article{mimoAndConditionalRandomFields,
+author = {Beigpour, Shida and Riess, Christian and Weijer, Joost and Angelopoulou, Elli},
+year = {2014},
+month = {01},
+pages = {83-96},
+title = {Multi-Illuminant Estimation With Conditional Random Fields},
+volume = {23},
+journal = {IEEE Transactions on Image Processing},
+doi = {10.1109/TIP.2013.2286327}
+}
+
+@article{gijsenij2011color,
+  title={Color constancy for multiple light sources},
+  author={Gijsenij, Arjan and Lu, Rui and Gevers, Theo},
+  journal={IEEE Transactions on image processing},
+  volume={21},
+  number={2},
+  pages={697--707},
+  year={2011},
+  publisher={IEEE}
+}
+
+@inproceedings{ono2022degree,
+  title={Degree-of-linear-polarization-based color constancy},
+  author={Ono, Taishi and Kondo, Yuhi and Sun, Legong and Kurita, Teppei and Moriuchi, Yusuke},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  pages={19740--19749},
+  year={2022}
+}
+
+@article{hsu2023color,
+  title={Color constancy and color consistency using dynamic gamut adjustment},
+  author={Hsu, Wei-Yen and Tsai, Wei-Hsuan},
+  journal={IEEE Transactions on Instrumentation and Measurement},
+  volume={72},
+  pages={1--12},
+  year={2023},
+  publisher={IEEE}
+}
+
+@inproceedings{ulucan2022bio,
+  title={BIO-CC: Biologically inspired color constancy.},
+  author={Ulucan, Oguzhan and Ulucan, Diclehan and Ebner, Marc},
+  booktitle={BMVC},
+  pages={960},
+  year={2022}
+}
+
+@article{zhang2024color,
+  title={Color decoupling for multi-illumination color constancy},
+  author={Zhang, Wen and Tan, Zhenshan and Zhang, Li and Li, Zhijiang},
+  journal={IEEE Transactions on Circuits and Systems for Video Technology},
+  volume={35},
+  number={5},
+  pages={4087--4099},
+  year={2024},
+  publisher={IEEE}
+}
+
+@inproceedings{ernst2024self,
+  title={Self-supervised learning of color constancy},
+  author={Ernst, Markus R and L{\'o}pez, Francisco M and Aubret, Arthur and Fleming, Roland W and Triesch, Jochen},
+  booktitle={2024 IEEE International Conference on Development and Learning (ICDL)},
+  pages={1--7},
+  year={2024},
+  organization={IEEE}
+}
+
+@article{zhang2024spnet,
+  title={SPNet: Semantic preserving network with semantic constraint and non-semantic calibration for color constancy},
+  author={Zhang, Wen and Li, Zhijiang and Zhang, Li and Tan, Zhenshan},
+  journal={Neurocomputing},
+  volume={596},
+  pages={127947},
+  year={2024},
+  publisher={Elsevier}
+}
+
+@inproceedings{afifi2020deepWB,
+  title={Deep White-Balance Editing},
+  author={Afifi, Mahmoud and Brown, Michael S},
+  booktitle={Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition},
+  year={2020}
+}
+
+@INPROCEEDINGS{afifiRenderedWB,
+  author={Afifi, Mahmoud and Price, Brian and Cohen, Scott and Brown, Michael S.},
+  booktitle={2019 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  title={When Color Constancy Goes Wrong: Correcting Improperly White-Balanced Images},
+  year={2019},
+  volume={},
+  number={},
+  pages={1535-1544},
+  keywords={Training;Computer vision;Image color analysis;Computational modeling;Manuals;Cameras;Pattern recognition;Computational Photography;Low-level Vision;Vision Applications and Systems},
+  doi={10.1109/CVPR.2019.00163}}
+
+@article{cardeiIlluminationNeuralNetwork,
+author = {Cardei, Vlad and Funt, Brian and Barnard, Kobus},
+year = {2002},
+month = {12},
+pages = {2374-2386},
+title = {Estimating the scene illumination chromaticity by using a neural network},
+volume = {19},
+journal = {Journal of the Optical Society of America A},
+doi = {10.1364/JOSAA.19.002374}
+}
+
+@misc{bianco2015colorconstancyusingcnns,
+      title={Color Constancy Using CNNs},
+      author={Simone Bianco and Claudio Cusano and Raimondo Schettini},
+      year={2015},
+      eprint={1504.04548},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/1504.04548},
+}
+
+@misc{chakrabarti2015colorconstancylearningpredict,
+      title={Color Constancy by Learning to Predict Chromaticity from Luminance},
+      author={Ayan Chakrabarti},
+      year={2015},
+      eprint={1506.02167},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/1506.02167},
+}
+
+@misc{afifi2022crosscameraconvolutionalcolorconstancy,
+      title={Cross-Camera Convolutional Color Constancy},
+      author={Mahmoud Afifi and Jonathan T. Barron and Chloe LeGendre and Yun-Ta Tsai and Francois Bleibel},
+      year={2022},
+      eprint={2011.11890},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2011.11890},
+}
+
+@inproceedings{cotogniIlluminantEquivariantNetworks,
+author = {Cotogni, Marco and Cusano, Claudio},
+title = {Illuminant Equivariant Networks for&nbsp;Computational Color Constancy},
+year = {2024},
+isbn = {978-3-031-72844-0},
+publisher = {Springer-Verlag},
+address = {Berlin, Heidelberg},
+url = {https://doi.org/10.1007/978-3-031-72845-7_18},
+doi = {10.1007/978-3-031-72845-7_18},
+booktitle = {Computational Color Imaging: 8th International Workshop, CCIW 2024, Milan, Italy, September 25–27, 2024, Proceedings},
+pages = {249–260},
+numpages = {12},
+keywords = {Illuminant Estimation, Illuminant Equivariant Networks, Computational Color Constancy, Computational Photography},
+location = {Milan, Italy}
+}
+
+@inproceedings{bleierColorConstancyNonUniformIllumination,
+author = {Bleier, Michael and Riess, Christian and Beigpour, Shida and Eibenberger, Eva and Angelopoulou, Elli and Tröger, Tobias and Kaup, André},
+year = {2011},
+month = {11},
+pages = {774-781},
+title = {Color constancy and non-uniform illumination: Can existing algorithms work?},
+doi = {10.1109/ICCVW.2011.6130331}
+}
+
+@misc{entok2024pixelwisecolorconstancysmoothness,
+      title={Pixel-Wise Color Constancy via Smoothness Techniques in Multi-Illuminant Scenes},
+      author={Umut Cem Entok and Firas Laakom and Farhad Pakdaman and Moncef Gabbouj},
+      year={2024},
+      eprint={2402.02922},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2402.02922},
+}
+
+@INPROCEEDINGS{huiMixedIlluminationFlashPhotography,
+  author={Hui, Zhuo and Sankaranarayanan, Aswin C. and Sunkavalli, Kalyan and Hadap, Sunil},
+  booktitle={2016 IEEE International Conference on Computational Photography (ICCP)},
+  title={White balance under mixed illumination using flash photography},
+  year={2016},
+  volume={},
+  number={},
+  pages={1-10},
+  keywords={Lighting;Image color analysis;Light sources;Kernel;Photography;Integrated circuits;Closed-form solutions},
+  doi={10.1109/ICCPHOT.2016.7492879}}
+
+@misc{li2023mimtmultiilluminantcolorconstancy,
+      title={MIMT: Multi-Illuminant Color Constancy via Multi-Task Local Surface and Light Color Learning},
+      author={Shuwei Li and Jikai Wang and Michael S. Brown and Robby T. Tan},
+      year={2023},
+      eprint={2211.08772},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2211.08772},
+}
+
+@article{luoMultiIlluminantMultiScaleHighFrequency,
+   title={Enhancing multi-illuminant color constancy through multi-scale estimation and high-frequency preservation},
+   volume={42},
+   ISSN={1432-2315},
+   url={http://dx.doi.org/10.1007/s00371-026-04370-9},
+   DOI={10.1007/s00371-026-04370-9},
+   number={3},
+   journal={The Visual Computer},
+   publisher={Springer Science and Business Media LLC},
+   author={Luo, Hang and Li, Rongwei and Liang, Jinxing},
+   year={2026},
+   month=Feb }
