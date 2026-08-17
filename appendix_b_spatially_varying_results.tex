@@ -1,0 +1,269 @@
+\section{Spatially Varying Illumination Estimation Results}
+\label{sec:appendix_spatially_varying_results}
+
+This appendix reports the complete multi-illuminant evaluation, in which the error is computed per pixel between the estimated illumination map $I_{p,est}$ and the ground truth map $I_{p,gt}$ over the pixel set $\mathcal{P}$, and then averaged over the image as described by Eq.~\ref{eq:mean_recovery_angular_error}, Eq.~\ref{eq:mean_reproduction_angular_error} and Eq.~\ref{eq:mean_delta_e2000_error} in chapter~\ref{chp:datasets_and_metrics}. The four tables report the mean recovery angular error in Table~\ref{tab:spatially_varying_recovery_angular_error}, the mean reproduction angular error in Table~\ref{tab:spatially_varying_reproduction_angular_error}, and the corresponding $\Delta E_{2000}$ errors in Tables~\ref{tab:spatially_varying_recovery_delta_e_2000} and~\ref{tab:spatially_varying_reproduction_delta_e_2000}. All errors are reported in degrees for the angular measures and in $\Delta E_{2000}$ units for the perceptual measures, and lower values indicate better performance throughout. The term $N$ denotes the number of images over which the statistics were accumulated for the corresponding dataset. The minimum is quoted to three decimal places because its values lie close to zero, whereas the remaining statistics are quoted to two. The spatially varying algorithms of section~\ref{sec:spatially_varying_illumination_estimation} are evaluated on every dataset. On the LSMI dataset~\cite{kim2021lsmi}, which provides per-pixel ground truth for genuinely multi-illuminant scenes, the global algorithms of section~\ref{sec:global_illumination_estimation} are additionally evaluated under the same per-pixel protocol by treating their single estimate as a spatially constant illumination map. The two LSMI groups were accumulated over different numbers of images, so they are listed as separate blocks and are ranked independently; they should not be compared directly against one another.
+
+\begingroup
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{6.8cm}rrrrrrr@{}}
+\caption{Recovery Angular Error of the spatially varying illumination estimation algorithms, averaged over the pixels of each image. Within each dataset the lowest error per column is shown in bold and the second lowest in italics; where the two coincide at the reported precision, both are shown in bold.}
+\label{tab:spatially_varying_recovery_angular_error} \\
+\toprule
+Method & Mean & Median & Tri- & Best & Worst & Max & Min \\
+ &  &  & mean & 25\% & 25\% &  &  \\
+\endfirsthead
+\multicolumn{8}{@{}l}{\textit{Table~\thetable{} -- continued from the previous page}} \\
+\toprule
+Method & Mean & Median & Tri- & Best & Worst & Max & Min \\
+ &  &  & mean & 25\% & 25\% &  &  \\
+\endhead
+\midrule
+\multicolumn{8}{r@{}}{\textit{continued on the next page}} \\
+\endfoot
+\bottomrule
+\endlastfoot
+\midrule
+\multicolumn{8}{@{}l}{\textbf{Shi--Gehler ColorChecker~\cite{gehler2008bayesian,shi2010reprocessed} ($N=568$)}} \\
+\midrule
+Local Space Average Color~\cite{ebnerLocalSpaceAverageColor} & \textbf{6.05} & \textbf{4.93} & \textbf{5.23} & \textbf{2.42} & \textit{11.39} & 24.87 & \textit{0.436} \\
+Multi-Light Grid (Gray World base)~\cite{gijsenij2011color} & \textit{6.49} & \textit{5.54} & \textit{5.76} & \textit{2.60} & 11.96 & \textit{24.17} & \textbf{0.435} \\
+Multi-Light Grid (Gray Edge base)~\cite{gijsenij2011color} & 6.59 & 6.08 & 6.21 & 3.58 & \textbf{10.42} & \textbf{17.64} & 1.158 \\
+\midrule
+\multicolumn{8}{@{}l}{\textbf{Cube++~\cite{ershov2020cube} ($N=4866$)}} \\
+\midrule
+Local Space Average Color~\cite{ebnerLocalSpaceAverageColor} & \textbf{4.41} & \textbf{3.75} & \textbf{3.88} & \textbf{1.20} & \textbf{8.79} & \textbf{44.04} & \textbf{0.195} \\
+Multi-Light Grid (Gray World base)~\cite{gijsenij2011color} & \textit{4.60} & \textit{3.95} & \textit{4.08} & \textit{1.33} & \textit{9.01} & \textit{44.67} & \textit{0.205} \\
+Multi-Light Grid (Gray Edge base)~\cite{gijsenij2011color} & 7.75 & 6.25 & 6.55 & 2.77 & 15.30 & 63.67 & 0.430 \\
+\midrule
+\multicolumn{8}{@{}l}{\textbf{NUS 8-Camera~\cite{cheng2014illuminant} ($N=1736$)}} \\
+\midrule
+Local Space Average Color~\cite{ebnerLocalSpaceAverageColor} & \textbf{5.09} & \textbf{4.20} & \textbf{4.46} & \textbf{2.00} & \textbf{9.58} & \textbf{26.14} & \textit{0.733} \\
+Multi-Light Grid (Gray World base)~\cite{gijsenij2011color} & \textit{5.29} & \textit{4.43} & \textit{4.68} & \textit{2.13} & \textit{9.84} & \textit{29.66} & \textbf{0.671} \\
+Multi-Light Grid (Gray Edge base)~\cite{gijsenij2011color} & 5.99 & 5.13 & 5.22 & 2.56 & 11.07 & 61.74 & 0.999 \\
+\midrule
+\multicolumn{8}{@{}l}{\textbf{NUS 8-Camera (extended)~\cite{cheng2014illuminant} ($N=1853$)}} \\
+\midrule
+Local Space Average Color~\cite{ebnerLocalSpaceAverageColor} & \textbf{5.12} & \textbf{4.21} & \textbf{4.47} & \textbf{2.02} & \textbf{9.65} & \textbf{26.14} & \textit{0.733} \\
+Multi-Light Grid (Gray World base)~\cite{gijsenij2011color} & \textit{5.32} & \textit{4.46} & \textit{4.70} & \textit{2.14} & \textit{9.91} & \textit{29.66} & \textbf{0.671} \\
+Multi-Light Grid (Gray Edge base)~\cite{gijsenij2011color} & 6.11 & 5.15 & 5.24 & 2.56 & 11.49 & 61.74 & 0.999 \\
+\midrule
+\multicolumn{8}{@{}l}{\textbf{LSMI~\cite{kim2021lsmi} -- spatially varying algorithms ($N=7484$)}} \\
+\midrule
+Local Space Average Color~\cite{ebnerLocalSpaceAverageColor} & \textbf{6.53} & \textbf{4.83} & \textbf{5.08} & \textbf{2.13} & \textbf{14.02} & \textbf{54.43} & \textbf{0.510} \\
+Multi-Light Grid (Gray World base)~\cite{gijsenij2011color} & \textit{6.75} & \textit{4.97} & \textit{5.26} & \textit{2.14} & \textit{14.55} & \textit{55.42} & \textit{0.595} \\
+Multi-Light Grid (Gray Edge base)~\cite{gijsenij2011color} & 9.25 & 7.78 & 7.97 & 4.44 & 16.79 & 61.35 & 1.351 \\
+\midrule
+\multicolumn{8}{@{}l}{\textbf{LSMI~\cite{kim2021lsmi} -- global algorithms ($N=4088$)}} \\
+\midrule
+Gray World~\cite{gray_world} & 7.22 & 5.16 & 5.48 & 2.11 & 16.06 & \textit{54.67} & 0.177 \\
+White Patch (Max-RGB)~\cite{white_patch} & 15.88 & 16.76 & 16.64 & 7.59 & 22.48 & 57.09 & 0.525 \\
+Shades of Gray ($p=6$)~\cite{shades_of_gray} & 10.24 & 9.83 & 9.77 & 2.95 & 18.46 & 57.17 & 0.276 \\
+Shades of Gray ($p=3$)~\cite{shades_of_gray} & 8.56 & 6.90 & 7.33 & 2.24 & 17.58 & 56.16 & \textbf{0.049} \\
+Gray Edge (1st order)~\cite{gray_edge} & 8.25 & 6.27 & 6.70 & 3.02 & 16.86 & \textbf{53.32} & 0.577 \\
+Bright Pixels (top 5\%)~\cite{bright_pixels} & \textit{6.71} & \textbf{4.34} & \textit{4.83} & \textbf{1.69} & 15.84 & 57.42 & \textit{0.144} \\
+PCA Bright \& Dark Pixels (0.5\%)~\cite{cheng2014illuminant} & 6.96 & 4.71 & 5.20 & \textit{1.83} & 15.93 & 58.37 & 0.168 \\
+Grey Pixels~\cite{yangGrayPixels} & \textbf{6.61} & \textit{4.38} & \textbf{4.71} & 1.85 & \textbf{15.49} & 55.25 & 0.217 \\
+Grayness Index~\cite{qianFindingGrayPixels} & 6.93 & 4.80 & 5.14 & 2.05 & \textit{15.72} & 55.83 & 0.221 \\
+Fast White Balance~\cite{fast_wb_greyness} & 7.24 & 5.16 & 5.48 & 2.08 & 16.14 & 54.88 & 0.181 \\
+\end{longtable}
+\endgroup
+
+\begingroup
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{6.8cm}rrrrrrr@{}}
+\caption{Reproduction Angular Error of the spatially varying illumination estimation algorithms, averaged over the pixels of each image. Within each dataset the lowest error per column is shown in bold and the second lowest in italics; where the two coincide at the reported precision, both are shown in bold.}
+\label{tab:spatially_varying_reproduction_angular_error} \\
+\toprule
+Method & Mean & Median & Tri- & Best & Worst & Max & Min \\
+ &  &  & mean & 25\% & 25\% &  &  \\
+\endfirsthead
+\multicolumn{8}{@{}l}{\textit{Table~\thetable{} -- continued from the previous page}} \\
+\toprule
+Method & Mean & Median & Tri- & Best & Worst & Max & Min \\
+ &  &  & mean & 25\% & 25\% &  &  \\
+\endhead
+\midrule
+\multicolumn{8}{r@{}}{\textit{continued on the next page}} \\
+\endfoot
+\bottomrule
+\endlastfoot
+\midrule
+\multicolumn{8}{@{}l}{\textbf{Shi--Gehler ColorChecker~\cite{gehler2008bayesian,shi2010reprocessed} ($N=568$)}} \\
+\midrule
+Local Space Average Color~\cite{ebnerLocalSpaceAverageColor} & \textbf{7.69} & \textbf{6.59} & \textbf{6.82} & \textbf{3.15} & \textit{14.15} & 27.48 & \textit{0.692} \\
+Multi-Light Grid (Gray World base)~\cite{gijsenij2011color} & 8.20 & 7.27 & 7.48 & \textit{3.41} & 14.69 & \textit{26.57} & \textbf{0.682} \\
+Multi-Light Grid (Gray Edge base)~\cite{gijsenij2011color} & \textit{7.81} & \textit{7.25} & \textit{7.43} & 4.40 & \textbf{12.05} & \textbf{19.49} & 1.180 \\
+\midrule
+\multicolumn{8}{@{}l}{\textbf{Cube++~\cite{ershov2020cube} ($N=4866$)}} \\
+\midrule
+Local Space Average Color~\cite{ebnerLocalSpaceAverageColor} & \textbf{5.75} & \textbf{4.95} & \textbf{5.12} & \textbf{1.63} & \textbf{11.26} & \textbf{31.97} & \textbf{0.256} \\
+Multi-Light Grid (Gray World base)~\cite{gijsenij2011color} & \textit{5.99} & \textit{5.23} & \textit{5.38} & \textit{1.81} & \textit{11.50} & \textit{32.00} & \textbf{0.256} \\
+Multi-Light Grid (Gray Edge base)~\cite{gijsenij2011color} & 9.09 & 7.76 & 8.03 & 3.46 & 17.01 & 51.83 & 0.528 \\
+\midrule
+\multicolumn{8}{@{}l}{\textbf{NUS 8-Camera~\cite{cheng2014illuminant} ($N=1736$)}} \\
+\midrule
+Local Space Average Color~\cite{ebnerLocalSpaceAverageColor} & \textbf{6.65} & \textbf{5.68} & \textbf{5.90} & \textbf{2.64} & \textbf{12.28} & \textbf{25.39} & \textit{0.993} \\
+Multi-Light Grid (Gray World base)~\cite{gijsenij2011color} & \textit{6.84} & \textit{5.92} & \textit{6.19} & \textit{2.79} & \textit{12.43} & \textit{25.99} & \textbf{0.922} \\
+Multi-Light Grid (Gray Edge base)~\cite{gijsenij2011color} & 7.03 & 6.15 & 6.26 & 3.13 & 12.52 & 51.13 & 1.171 \\
+\midrule
+\multicolumn{8}{@{}l}{\textbf{NUS 8-Camera (extended)~\cite{cheng2014illuminant} ($N=1853$)}} \\
+\midrule
+Local Space Average Color~\cite{ebnerLocalSpaceAverageColor} & \textbf{6.68} & \textbf{5.68} & \textbf{5.92} & \textbf{2.65} & \textbf{12.33} & \textbf{25.39} & \textit{0.993} \\
+Multi-Light Grid (Gray World base)~\cite{gijsenij2011color} & \textit{6.86} & \textit{5.91} & \textit{6.20} & \textit{2.80} & \textit{12.49} & \textit{25.99} & \textbf{0.922} \\
+Multi-Light Grid (Gray Edge base)~\cite{gijsenij2011color} & 7.13 & 6.18 & 6.29 & 3.13 & 12.88 & 51.13 & 1.171 \\
+\midrule
+\multicolumn{8}{@{}l}{\textbf{LSMI~\cite{kim2021lsmi} -- spatially varying algorithms ($N=7484$)}} \\
+\midrule
+Local Space Average Color~\cite{ebnerLocalSpaceAverageColor} & \textbf{7.81} & \textbf{6.04} & \textbf{6.35} & \textbf{2.71} & \textbf{16.04} & \textbf{43.78} & \textbf{0.600} \\
+Multi-Light Grid (Gray World base)~\cite{gijsenij2011color} & \textit{8.01} & \textit{6.23} & \textit{6.55} & \textit{2.75} & \textit{16.37} & \textit{43.91} & \textit{0.695} \\
+Multi-Light Grid (Gray Edge base)~\cite{gijsenij2011color} & 9.90 & 8.58 & 8.75 & 5.16 & 17.10 & 51.91 & 1.905 \\
+\midrule
+\multicolumn{8}{@{}l}{\textbf{LSMI~\cite{kim2021lsmi} -- global algorithms ($N=4088$)}} \\
+\midrule
+Gray World~\cite{gray_world} & 8.52 & 6.56 & 6.86 & 2.74 & 17.88 & 43.58 & 0.187 \\
+White Patch (Max-RGB)~\cite{white_patch} & 16.11 & 16.82 & 16.78 & 8.40 & 22.37 & \textit{43.11} & 0.541 \\
+Shades of Gray ($p=6$)~\cite{shades_of_gray} & 11.11 & 10.94 & 10.75 & 3.73 & 19.16 & 43.50 & 0.308 \\
+Shades of Gray ($p=3$)~\cite{shades_of_gray} & 9.61 & 8.09 & 8.44 & 2.95 & 18.82 & 43.46 & \textbf{0.071} \\
+Gray Edge (1st order)~\cite{gray_edge} & 9.17 & 7.37 & 7.77 & 3.83 & \textit{17.60} & \textbf{41.01} & 0.699 \\
+Bright Pixels (top 5\%)~\cite{bright_pixels} & \textit{8.18} & \textbf{5.71} & \textit{6.21} & \textbf{2.22} & 18.44 & 45.93 & \textit{0.150} \\
+PCA Bright \& Dark Pixels (0.5\%)~\cite{cheng2014illuminant} & 8.51 & 6.17 & 6.68 & \textit{2.37} & 18.67 & 46.03 & 0.214 \\
+Grey Pixels~\cite{yangGrayPixels} & \textbf{7.98} & \textit{5.83} & \textbf{6.13} & 2.44 & \textbf{17.54} & 43.70 & 0.222 \\
+Grayness Index~\cite{qianFindingGrayPixels} & 8.36 & 6.31 & 6.60 & 2.72 & 17.77 & 43.65 & 0.263 \\
+Fast White Balance~\cite{fast_wb_greyness} & 8.54 & 6.55 & 6.85 & 2.72 & 17.98 & 43.73 & 0.201 \\
+\end{longtable}
+\endgroup
+
+\begingroup
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{6.8cm}rrrrrrr@{}}
+\caption{Recovery $\Delta E_{2000}$ of the spatially varying illumination estimation algorithms, averaged over the pixels of each image. Within each dataset the lowest error per column is shown in bold and the second lowest in italics; where the two coincide at the reported precision, both are shown in bold.}
+\label{tab:spatially_varying_recovery_delta_e_2000} \\
+\toprule
+Method & Mean & Median & Tri- & Best & Worst & Max & Min \\
+ &  &  & mean & 25\% & 25\% &  &  \\
+\endfirsthead
+\multicolumn{8}{@{}l}{\textit{Table~\thetable{} -- continued from the previous page}} \\
+\toprule
+Method & Mean & Median & Tri- & Best & Worst & Max & Min \\
+ &  &  & mean & 25\% & 25\% &  &  \\
+\endhead
+\midrule
+\multicolumn{8}{r@{}}{\textit{continued on the next page}} \\
+\endfoot
+\bottomrule
+\endlastfoot
+\midrule
+\multicolumn{8}{@{}l}{\textbf{Shi--Gehler ColorChecker~\cite{gehler2008bayesian,shi2010reprocessed} ($N=568$)}} \\
+\midrule
+Local Space Average Color~\cite{ebnerLocalSpaceAverageColor} & \textbf{5.55} & \textbf{4.61} & \textbf{4.85} & \textbf{2.15} & \textbf{10.46} & 21.78 & \textit{0.337} \\
+Multi-Light Grid (Gray World base)~\cite{gijsenij2011color} & \textit{5.97} & \textit{5.16} & \textit{5.30} & \textit{2.28} & 11.02 & \textit{21.30} & \textbf{0.334} \\
+Multi-Light Grid (Gray Edge base)~\cite{gijsenij2011color} & 6.39 & 5.75 & 5.95 & 3.15 & \textit{10.67} & \textbf{21.19} & 0.951 \\
+\midrule
+\multicolumn{8}{@{}l}{\textbf{Cube++~\cite{ershov2020cube} ($N=4866$)}} \\
+\midrule
+Local Space Average Color~\cite{ebnerLocalSpaceAverageColor} & \textbf{4.03} & \textbf{3.44} & \textbf{3.56} & \textbf{1.08} & \textbf{8.03} & \textbf{43.90} & \textbf{0.163} \\
+Multi-Light Grid (Gray World base)~\cite{gijsenij2011color} & \textit{4.19} & \textit{3.61} & \textit{3.72} & \textit{1.20} & \textit{8.21} & \textit{44.50} & \textit{0.170} \\
+Multi-Light Grid (Gray Edge base)~\cite{gijsenij2011color} & 7.94 & 5.80 & 6.25 & 2.46 & 17.08 & 76.82 & 0.350 \\
+\midrule
+\multicolumn{8}{@{}l}{\textbf{NUS 8-Camera~\cite{cheng2014illuminant} ($N=1736$)}} \\
+\midrule
+Local Space Average Color~\cite{ebnerLocalSpaceAverageColor} & \textbf{4.35} & \textbf{3.62} & \textbf{3.82} & \textbf{1.70} & \textbf{8.24} & \textbf{25.29} & \textbf{0.542} \\
+Multi-Light Grid (Gray World base)~\cite{gijsenij2011color} & \textit{4.51} & \textit{3.79} & \textit{3.99} & \textit{1.79} & \textit{8.44} & \textit{29.22} & \textit{0.580} \\
+Multi-Light Grid (Gray Edge base)~\cite{gijsenij2011color} & 5.49 & 4.37 & 4.52 & 2.12 & 10.92 & 66.83 & 0.759 \\
+\midrule
+\multicolumn{8}{@{}l}{\textbf{NUS 8-Camera (extended)~\cite{cheng2014illuminant} ($N=1853$)}} \\
+\midrule
+Local Space Average Color~\cite{ebnerLocalSpaceAverageColor} & \textbf{4.40} & \textbf{3.65} & \textbf{3.85} & \textbf{1.72} & \textbf{8.34} & \textbf{25.29} & \textbf{0.542} \\
+Multi-Light Grid (Gray World base)~\cite{gijsenij2011color} & \textit{4.55} & \textit{3.80} & \textit{4.00} & \textit{1.81} & \textit{8.53} & \textit{29.22} & \textit{0.580} \\
+Multi-Light Grid (Gray Edge base)~\cite{gijsenij2011color} & 5.65 & 4.42 & 4.57 & 2.13 & 11.46 & 69.17 & 0.759 \\
+\midrule
+\multicolumn{8}{@{}l}{\textbf{LSMI~\cite{kim2021lsmi} -- spatially varying algorithms ($N=7484$)}} \\
+\midrule
+Local Space Average Color~\cite{ebnerLocalSpaceAverageColor} & \textbf{5.68} & \textbf{4.19} & \textbf{4.42} & \textit{1.86} & \textbf{12.20} & \textbf{47.16} & \textbf{0.467} \\
+Multi-Light Grid (Gray World base)~\cite{gijsenij2011color} & \textit{5.83} & \textit{4.23} & \textit{4.53} & \textbf{1.85} & \textit{12.63} & \textit{47.26} & \textit{0.555} \\
+Multi-Light Grid (Gray Edge base)~\cite{gijsenij2011color} & 9.43 & 7.58 & 7.87 & 3.77 & 18.39 & 81.22 & 1.087 \\
+\midrule
+\multicolumn{8}{@{}l}{\textbf{LSMI~\cite{kim2021lsmi} -- global algorithms ($N=4088$)}} \\
+\midrule
+Gray World~\cite{gray_world} & 6.30 & 4.36 & 4.66 & 1.72 & 14.30 & 47.04 & 0.125 \\
+White Patch (Max-RGB)~\cite{white_patch} & 18.63 & 21.79 & 20.58 & 7.67 & 24.63 & 46.43 & 0.412 \\
+Shades of Gray ($p=6$)~\cite{shades_of_gray} & 10.14 & 9.14 & 9.43 & 2.48 & 19.31 & 46.60 & 0.298 \\
+Shades of Gray ($p=3$)~\cite{shades_of_gray} & 7.97 & 6.07 & 6.69 & 1.86 & 17.02 & \textit{46.40} & \textbf{0.041} \\
+Gray Edge (1st order)~\cite{gray_edge} & 7.74 & 5.48 & 6.02 & 2.35 & 16.88 & \textbf{44.40} & 0.400 \\
+Bright Pixels (top 5\%)~\cite{bright_pixels} & \textit{5.93} & \textit{3.74} & \textit{4.19} & \textbf{1.42} & \textit{14.26} & 46.74 & \textit{0.116} \\
+PCA Bright \& Dark Pixels (0.5\%)~\cite{cheng2014illuminant} & 6.17 & 4.10 & 4.53 & 1.54 & 14.39 & 47.12 & 0.123 \\
+Grey Pixels~\cite{yangGrayPixels} & \textbf{5.81} & \textbf{3.71} & \textbf{4.04} & \textit{1.51} & \textbf{13.93} & 47.21 & 0.216 \\
+Grayness Index~\cite{qianFindingGrayPixels} & 6.14 & 4.02 & 4.39 & 1.69 & 14.39 & 47.55 & 0.232 \\
+Fast White Balance~\cite{fast_wb_greyness} & 6.31 & 4.34 & 4.65 & 1.70 & 14.36 & 47.18 & 0.139 \\
+\end{longtable}
+\endgroup
+
+\begingroup
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{6.8cm}rrrrrrr@{}}
+\caption{Reproduction $\Delta E_{2000}$ of the spatially varying illumination estimation algorithms, averaged over the pixels of each image. Within each dataset the lowest error per column is shown in bold and the second lowest in italics; where the two coincide at the reported precision, both are shown in bold.}
+\label{tab:spatially_varying_reproduction_delta_e_2000} \\
+\toprule
+Method & Mean & Median & Tri- & Best & Worst & Max & Min \\
+ &  &  & mean & 25\% & 25\% &  &  \\
+\endfirsthead
+\multicolumn{8}{@{}l}{\textit{Table~\thetable{} -- continued from the previous page}} \\
+\toprule
+Method & Mean & Median & Tri- & Best & Worst & Max & Min \\
+ &  &  & mean & 25\% & 25\% &  &  \\
+\endhead
+\midrule
+\multicolumn{8}{r@{}}{\textit{continued on the next page}} \\
+\endfoot
+\bottomrule
+\endlastfoot
+\midrule
+\multicolumn{8}{@{}l}{\textbf{Shi--Gehler ColorChecker~\cite{gehler2008bayesian,shi2010reprocessed} ($N=568$)}} \\
+\midrule
+Local Space Average Color~\cite{ebnerLocalSpaceAverageColor} & \textbf{9.57} & \textbf{8.82} & \textbf{8.98} & \textbf{4.71} & \textbf{15.91} & 25.66 & \textbf{1.715} \\
+Multi-Light Grid (Gray World base)~\cite{gijsenij2011color} & \textit{10.21} & \textit{9.58} & \textit{9.72} & \textit{5.13} & 16.59 & \textit{25.65} & \textit{1.727} \\
+Multi-Light Grid (Gray Edge base)~\cite{gijsenij2011color} & 11.22 & 10.71 & 10.94 & 6.84 & \textit{16.47} & \textbf{22.49} & 2.808 \\
+\midrule
+\multicolumn{8}{@{}l}{\textbf{Cube++~\cite{ershov2020cube} ($N=4866$)}} \\
+\midrule
+Local Space Average Color~\cite{ebnerLocalSpaceAverageColor} & \textbf{7.36} & \textbf{6.82} & \textbf{6.93} & \textbf{2.65} & \textbf{13.05} & \textit{25.53} & \textit{0.538} \\
+Multi-Light Grid (Gray World base)~\cite{gijsenij2011color} & \textit{7.62} & \textit{7.12} & \textit{7.21} & \textit{2.90} & \textit{13.23} & \textbf{25.52} & \textbf{0.525} \\
+Multi-Light Grid (Gray Edge base)~\cite{gijsenij2011color} & 12.34 & 11.36 & 11.74 & 5.73 & 20.45 & 32.19 & 1.140 \\
+\midrule
+\multicolumn{8}{@{}l}{\textbf{NUS 8-Camera~\cite{cheng2014illuminant} ($N=1736$)}} \\
+\midrule
+Local Space Average Color~\cite{ebnerLocalSpaceAverageColor} & \textbf{8.81} & \textbf{8.14} & \textbf{8.29} & \textbf{4.20} & \textbf{14.59} & \textbf{24.80} & \textit{1.608} \\
+Multi-Light Grid (Gray World base)~\cite{gijsenij2011color} & \textit{9.06} & \textit{8.41} & \textit{8.61} & \textit{4.49} & \textit{14.66} & \textit{24.87} & \textbf{1.517} \\
+Multi-Light Grid (Gray Edge base)~\cite{gijsenij2011color} & 10.49 & 9.93 & 9.98 & 5.60 & 16.43 & 31.95 & 2.429 \\
+\midrule
+\multicolumn{8}{@{}l}{\textbf{NUS 8-Camera (extended)~\cite{cheng2014illuminant} ($N=1853$)}} \\
+\midrule
+Local Space Average Color~\cite{ebnerLocalSpaceAverageColor} & \textbf{8.85} & \textbf{8.17} & \textbf{8.32} & \textbf{4.23} & \textbf{14.67} & \textbf{24.80} & \textit{1.608} \\
+Multi-Light Grid (Gray World base)~\cite{gijsenij2011color} & \textit{9.09} & \textit{8.41} & \textit{8.62} & \textit{4.51} & \textit{14.72} & \textit{24.87} & \textbf{1.517} \\
+Multi-Light Grid (Gray Edge base)~\cite{gijsenij2011color} & 10.55 & 9.95 & 10.02 & 5.60 & 16.60 & 31.95 & 2.429 \\
+\midrule
+\multicolumn{8}{@{}l}{\textbf{LSMI~\cite{kim2021lsmi} -- spatially varying algorithms ($N=7484$)}} \\
+\midrule
+Local Space Average Color~\cite{ebnerLocalSpaceAverageColor} & \textbf{9.37} & \textbf{8.47} & \textbf{8.61} & \textbf{4.24} & \textbf{16.18} & \textbf{31.78} & \textbf{1.059} \\
+Multi-Light Grid (Gray World base)~\cite{gijsenij2011color} & \textit{9.46} & \textit{8.50} & \textit{8.69} & \textit{4.29} & \textit{16.30} & \textit{31.86} & \textit{1.265} \\
+Multi-Light Grid (Gray Edge base)~\cite{gijsenij2011color} & 13.85 & 13.64 & 13.66 & 9.18 & 18.97 & 32.49 & 3.688 \\
+\midrule
+\multicolumn{8}{@{}l}{\textbf{LSMI~\cite{kim2021lsmi} -- global algorithms ($N=4088$)}} \\
+\midrule
+Gray World~\cite{gray_world} & 10.39 & 9.41 & 9.63 & 4.60 & 17.86 & 31.54 & 0.502 \\
+White Patch (Max-RGB)~\cite{white_patch} & 20.03 & 22.01 & 21.55 & 12.64 & 24.04 & \textit{30.96} & 1.464 \\
+Shades of Gray ($p=6$)~\cite{shades_of_gray} & 14.85 & 15.97 & 15.40 & 6.22 & 21.99 & 31.26 & 0.546 \\
+Shades of Gray ($p=3$)~\cite{shades_of_gray} & 12.55 & 12.18 & 12.32 & 4.87 & 20.81 & 31.31 & \textbf{0.124} \\
+Gray Edge (1st order)~\cite{gray_edge} & 12.72 & 12.02 & 12.27 & 6.98 & 19.55 & \textbf{29.61} & 1.382 \\
+Bright Pixels (top 5\%)~\cite{bright_pixels} & \textit{9.55} & \textit{8.08} & \textit{8.42} & \textbf{3.77} & 17.87 & 33.30 & 0.362 \\
+PCA Bright \& Dark Pixels (0.5\%)~\cite{cheng2014illuminant} & 10.02 & 8.77 & 9.06 & 4.08 & 18.06 & 33.38 & \textit{0.362} \\
+Grey Pixels~\cite{yangGrayPixels} & \textbf{9.28} & \textbf{7.89} & \textbf{8.19} & \textit{4.02} & \textbf{16.93} & 31.57 & 0.620 \\
+Grayness Index~\cite{qianFindingGrayPixels} & 9.82 & 8.59 & 8.80 & 4.46 & \textit{17.46} & 31.70 & 0.442 \\
+Fast White Balance~\cite{fast_wb_greyness} & 10.39 & 9.40 & 9.62 & 4.53 & 17.93 & 31.65 & 0.506 \\
+\end{longtable}
+\endgroup
+

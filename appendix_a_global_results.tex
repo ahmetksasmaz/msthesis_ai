@@ -1,0 +1,357 @@
+\section{Global Illumination Estimation Results}
+\label{sec:appendix_global_results}
+
+This appendix reports the complete single-illuminant evaluation of the global illumination estimation algorithms reviewed in section~\ref{sec:global_illumination_estimation}. Each algorithm predicts a single illuminant vector $L_{est}$ per image, which is compared against the ground truth illuminant $L_{gt}$ supplied by the dataset. The four tables correspond to the four error measures defined in chapter~\ref{chp:datasets_and_metrics}: the recovery angular error of Eq.~\ref{eq:recovery_angular_error} in Table~\ref{tab:global_recovery_angular_error}, the reproduction angular error of Eq.~\ref{eq:reproduction_angular_error} in Table~\ref{tab:global_reproduction_angular_error}, and the corresponding $\Delta E_{2000}$ errors of Eq.~\ref{eq:delta_e2000_error} in Tables~\ref{tab:global_recovery_delta_e_2000} and~\ref{tab:global_reproduction_delta_e_2000}. All errors are reported in degrees for the angular measures and in $\Delta E_{2000}$ units for the perceptual measures, and lower values indicate better performance throughout. The term $N$ denotes the number of images over which the statistics were accumulated for the corresponding dataset. The minimum is quoted to three decimal places because its values lie close to zero, whereas the remaining statistics are quoted to two.
+
+\begingroup
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{6.8cm}rrrrrrr@{}}
+\caption{Recovery Angular Error of the global illumination estimation algorithms. Within each dataset the lowest error per column is shown in bold and the second lowest in italics; where the two coincide at the reported precision, both are shown in bold.}
+\label{tab:global_recovery_angular_error} \\
+\toprule
+Method & Mean & Median & Tri- & Best & Worst & Max & Min \\
+ &  &  & mean & 25\% & 25\% &  &  \\
+\endfirsthead
+\multicolumn{8}{@{}l}{\textit{Table~\thetable{} -- continued from the previous page}} \\
+\toprule
+Method & Mean & Median & Tri- & Best & Worst & Max & Min \\
+ &  &  & mean & 25\% & 25\% &  &  \\
+\endhead
+\midrule
+\multicolumn{8}{r@{}}{\textit{continued on the next page}} \\
+\endfoot
+\bottomrule
+\endlastfoot
+\midrule
+\multicolumn{8}{@{}l}{\textbf{Shi--Gehler ColorChecker~\cite{gehler2008bayesian,shi2010reprocessed} ($N=568$)}} \\
+\midrule
+Gray World~\cite{gray_world} & 4.75 & 3.61 & 3.91 & 1.00 & 10.47 & 24.80 & \textit{0.025} \\
+White Patch (Max-RGB)~\cite{white_patch} & 10.27 & 9.11 & 9.47 & 1.58 & 20.51 & 50.44 & 0.187 \\
+Shades of Gray ($p=6$)~\cite{shades_of_gray} & 6.32 & 4.53 & 5.20 & 0.79 & 14.70 & 36.22 & 0.037 \\
+Shades of Gray ($p=3$)~\cite{shades_of_gray} & 4.50 & 2.93 & 3.47 & 0.61 & 10.77 & 22.53 & 0.044 \\
+Gray Edge (1st order)~\cite{gray_edge} & 4.87 & 4.22 & 4.40 & 2.02 & \textit{8.81} & \textbf{16.43} & 0.219 \\
+Bright Pixels (top 5\%)~\cite{bright_pixels} & \textbf{3.46} & \textbf{2.11} & \textbf{2.46} & \textbf{0.48} & \textbf{8.56} & 28.38 & 0.078 \\
+PCA Bright \& Dark Pixels (0.5\%)~\cite{cheng2014illuminant} & \textit{3.85} & \textit{2.30} & \textit{2.65} & \textit{0.52} & 9.83 & 28.39 & \textbf{0.021} \\
+Grey Pixels~\cite{yangGrayPixels} & 4.42 & 3.42 & 3.70 & 1.18 & 9.27 & \textit{19.51} & 0.121 \\
+Grayness Index~\cite{qianFindingGrayPixels} & 5.01 & 4.18 & 4.33 & 1.06 & 10.47 & 23.15 & 0.080 \\
+Fast White Balance~\cite{fast_wb_greyness} & 4.73 & 3.64 & 3.91 & 0.97 & 10.45 & 24.78 & 0.032 \\
+\midrule
+\multicolumn{8}{@{}l}{\textbf{Cube++~\cite{ershov2020cube} ($N=4866$)}} \\
+\midrule
+Gray World~\cite{gray_world} & 3.67 & 2.62 & 2.92 & 0.56 & \textit{8.43} & 44.78 & \textbf{0.008} \\
+White Patch (Max-RGB)~\cite{white_patch} & 13.04 & 16.03 & 13.64 & 1.68 & 22.82 & 64.48 & 0.042 \\
+Shades of Gray ($p=6$)~\cite{shades_of_gray} & 6.46 & 4.77 & 5.40 & 0.73 & 14.80 & 31.63 & 0.035 \\
+Shades of Gray ($p=3$)~\cite{shades_of_gray} & 3.71 & 2.55 & 2.83 & 0.55 & 8.91 & \textbf{26.90} & 0.029 \\
+Gray Edge (1st order)~\cite{gray_edge} & 5.83 & 4.81 & 5.06 & 1.59 & 11.79 & 39.49 & 0.013 \\
+Bright Pixels (top 5\%)~\cite{bright_pixels} & \textit{3.51} & \textbf{2.16} & \textbf{2.49} & \textit{0.54} & 8.80 & 39.09 & 0.029 \\
+PCA Bright \& Dark Pixels (0.5\%)~\cite{cheng2014illuminant} & 4.13 & \textit{2.30} & \textit{2.70} & 0.60 & 10.81 & \textit{27.12} & 0.020 \\
+Grey Pixels~\cite{yangGrayPixels} & \textbf{3.42} & 2.49 & 2.73 & 0.56 & \textbf{7.83} & 38.83 & 0.019 \\
+Grayness Index~\cite{qianFindingGrayPixels} & 5.35 & 3.90 & 4.20 & 0.88 & 12.27 & 43.98 & \textit{0.009} \\
+Fast White Balance~\cite{fast_wb_greyness} & 3.66 & 2.62 & 2.92 & \textbf{0.53} & 8.44 & 44.79 & 0.034 \\
+\midrule
+\multicolumn{8}{@{}l}{\textbf{NUS 8-Camera~\cite{cheng2014illuminant} ($N=1736$)}} \\
+\midrule
+Gray World~\cite{gray_world} & 4.10 & 3.09 & 3.32 & 0.91 & 9.04 & 22.42 & 0.077 \\
+White Patch (Max-RGB)~\cite{white_patch} & 12.85 & 16.30 & 14.13 & 2.04 & 21.39 & 39.85 & 0.191 \\
+Shades of Gray ($p=6$)~\cite{shades_of_gray} & 5.57 & 4.24 & 4.80 & 1.20 & 11.83 & 24.48 & \textit{0.026} \\
+Shades of Gray ($p=3$)~\cite{shades_of_gray} & 4.15 & 3.29 & 3.56 & 0.99 & 8.72 & \textbf{17.09} & 0.036 \\
+Gray Edge (1st order)~\cite{gray_edge} & 4.17 & 3.46 & 3.67 & 1.35 & 8.09 & 20.27 & 0.028 \\
+Bright Pixels (top 5\%)~\cite{bright_pixels} & \textit{3.17} & \textit{2.35} & \textit{2.49} & \textit{0.65} & \textit{7.22} & 19.34 & 0.039 \\
+PCA Bright \& Dark Pixels (0.5\%)~\cite{cheng2014illuminant} & \textbf{2.72} & \textbf{1.97} & \textbf{2.13} & \textbf{0.60} & \textbf{6.15} & 18.84 & 0.042 \\
+Grey Pixels~\cite{yangGrayPixels} & 3.42 & 2.44 & 2.76 & 0.75 & 7.74 & \textit{18.13} & 0.029 \\
+Grayness Index~\cite{qianFindingGrayPixels} & 4.13 & 2.84 & 3.20 & 0.85 & 9.52 & 25.72 & 0.050 \\
+Fast White Balance~\cite{fast_wb_greyness} & 4.11 & 3.13 & 3.33 & 0.90 & 9.07 & 22.37 & \textbf{0.021} \\
+\midrule
+\multicolumn{8}{@{}l}{\textbf{NUS 8-Camera (extended)~\cite{cheng2014illuminant} ($N=1853$)}} \\
+\midrule
+Gray World~\cite{gray_world} & 4.13 & 3.15 & 3.37 & 0.92 & 9.09 & 22.42 & 0.077 \\
+White Patch (Max-RGB)~\cite{white_patch} & 12.96 & 16.42 & 14.25 & 2.11 & 21.36 & 39.85 & 0.191 \\
+Shades of Gray ($p=6$)~\cite{shades_of_gray} & 5.66 & 4.39 & 4.94 & 1.23 & 11.88 & 24.48 & \textit{0.026} \\
+Shades of Gray ($p=3$)~\cite{shades_of_gray} & 4.22 & 3.36 & 3.63 & 1.02 & 8.80 & 19.96 & 0.036 \\
+Gray Edge (1st order)~\cite{gray_edge} & 4.20 & 3.50 & 3.71 & 1.36 & 8.16 & 20.27 & 0.028 \\
+Bright Pixels (top 5\%)~\cite{bright_pixels} & \textit{3.21} & \textit{2.35} & \textit{2.52} & \textit{0.66} & \textit{7.28} & 19.34 & 0.039 \\
+PCA Bright \& Dark Pixels (0.5\%)~\cite{cheng2014illuminant} & \textbf{2.79} & \textbf{2.02} & \textbf{2.18} & \textbf{0.61} & \textbf{6.28} & \textit{18.84} & 0.042 \\
+Grey Pixels~\cite{yangGrayPixels} & 3.45 & 2.47 & 2.79 & 0.76 & 7.81 & \textbf{18.13} & 0.029 \\
+Grayness Index~\cite{qianFindingGrayPixels} & 4.16 & 2.88 & 3.25 & 0.86 & 9.59 & 25.72 & 0.050 \\
+Fast White Balance~\cite{fast_wb_greyness} & 4.14 & 3.18 & 3.38 & 0.90 & 9.12 & 22.37 & \textbf{0.021} \\
+\midrule
+\multicolumn{8}{@{}l}{\textbf{LSMI~\cite{kim2021lsmi} ($N=3396$)}} \\
+\midrule
+Gray World~\cite{gray_world} & 4.55 & 3.50 & 3.71 & 1.07 & 9.83 & 40.45 & 0.034 \\
+White Patch (Max-RGB)~\cite{white_patch} & 12.24 & 14.74 & 13.09 & 2.81 & 19.84 & 41.43 & \textbf{0.000} \\
+Shades of Gray ($p=6$)~\cite{shades_of_gray} & 7.68 & 6.76 & 7.12 & 1.23 & 15.52 & \textbf{34.89} & \textit{0.006} \\
+Shades of Gray ($p=3$)~\cite{shades_of_gray} & 6.06 & 4.49 & 5.09 & 1.08 & 13.25 & 35.27 & 0.019 \\
+Gray Edge (1st order)~\cite{gray_edge} & 6.77 & 5.60 & 5.89 & 2.50 & 13.04 & 36.34 & 0.165 \\
+Bright Pixels (top 5\%)~\cite{bright_pixels} & \textbf{3.18} & \textbf{2.06} & \textbf{2.25} & \textbf{0.61} & \textbf{7.79} & 37.54 & 0.030 \\
+PCA Bright \& Dark Pixels (0.5\%)~\cite{cheng2014illuminant} & \textit{3.39} & \textit{2.33} & \textit{2.52} & \textit{0.67} & \textit{7.97} & \textit{34.94} & 0.027 \\
+Grey Pixels~\cite{yangGrayPixels} & 3.58 & 2.50 & 2.65 & 0.74 & 8.37 & 38.64 & 0.039 \\
+Grayness Index~\cite{qianFindingGrayPixels} & 4.15 & 3.04 & 3.21 & 0.88 & 9.44 & 38.01 & 0.026 \\
+Fast White Balance~\cite{fast_wb_greyness} & 4.53 & 3.47 & 3.69 & 1.02 & 9.89 & 40.59 & 0.033 \\
+\end{longtable}
+\endgroup
+
+\begingroup
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{6.8cm}rrrrrrr@{}}
+\caption{Reproduction Angular Error of the global illumination estimation algorithms. Within each dataset the lowest error per column is shown in bold and the second lowest in italics; where the two coincide at the reported precision, both are shown in bold.}
+\label{tab:global_reproduction_angular_error} \\
+\toprule
+Method & Mean & Median & Tri- & Best & Worst & Max & Min \\
+ &  &  & mean & 25\% & 25\% &  &  \\
+\endfirsthead
+\multicolumn{8}{@{}l}{\textit{Table~\thetable{} -- continued from the previous page}} \\
+\toprule
+Method & Mean & Median & Tri- & Best & Worst & Max & Min \\
+ &  &  & mean & 25\% & 25\% &  &  \\
+\endhead
+\midrule
+\multicolumn{8}{r@{}}{\textit{continued on the next page}} \\
+\endfoot
+\bottomrule
+\endlastfoot
+\midrule
+\multicolumn{8}{@{}l}{\textbf{Shi--Gehler ColorChecker~\cite{gehler2008bayesian,shi2010reprocessed} ($N=568$)}} \\
+\midrule
+Gray World~\cite{gray_world} & 6.04 & 4.74 & 5.04 & 1.24 & 13.19 & 26.94 & 0.033 \\
+White Patch (Max-RGB)~\cite{white_patch} & 10.69 & 10.28 & 10.28 & 1.90 & 20.20 & 30.09 & 0.191 \\
+Shades of Gray ($p=6$)~\cite{shades_of_gray} & 7.13 & 5.56 & 6.05 & 0.94 & 15.98 & \textit{26.08} & 0.053 \\
+Shades of Gray ($p=3$)~\cite{shades_of_gray} & 5.47 & 3.68 & 4.28 & 0.74 & 12.92 & 27.59 & 0.041 \\
+Gray Edge (1st order)~\cite{gray_edge} & 6.01 & 5.27 & 5.47 & 2.49 & \textbf{10.78} & \textbf{21.00} & 0.227 \\
+Bright Pixels (top 5\%)~\cite{bright_pixels} & \textbf{4.47} & \textbf{2.81} & \textbf{3.29} & \textbf{0.60} & \textit{11.05} & 40.29 & 0.103 \\
+PCA Bright \& Dark Pixels (0.5\%)~\cite{cheng2014illuminant} & \textit{4.99} & \textit{2.93} & \textit{3.47} & \textit{0.64} & 12.74 & 40.09 & \textbf{0.021} \\
+Grey Pixels~\cite{yangGrayPixels} & 5.64 & 4.40 & 4.72 & 1.52 & 11.75 & 26.23 & 0.109 \\
+Grayness Index~\cite{qianFindingGrayPixels} & 6.40 & 5.44 & 5.61 & 1.44 & 13.20 & 32.86 & 0.099 \\
+Fast White Balance~\cite{fast_wb_greyness} & 6.01 & 4.71 & 5.02 & 1.21 & 13.15 & 26.94 & \textit{0.031} \\
+\midrule
+\multicolumn{8}{@{}l}{\textbf{Cube++~\cite{ershov2020cube} ($N=4866$)}} \\
+\midrule
+Gray World~\cite{gray_world} & 4.79 & 3.55 & 3.92 & 0.72 & 10.86 & 31.90 & \textbf{0.011} \\
+White Patch (Max-RGB)~\cite{white_patch} & 13.11 & 16.44 & 14.06 & 2.07 & 21.89 & 42.22 & 0.042 \\
+Shades of Gray ($p=6$)~\cite{shades_of_gray} & 7.43 & 5.72 & 6.46 & 0.94 & 16.34 & 30.14 & 0.038 \\
+Shades of Gray ($p=3$)~\cite{shades_of_gray} & 4.65 & 3.36 & 3.69 & 0.73 & \textit{10.80} & \textbf{28.15} & 0.034 \\
+Gray Edge (1st order)~\cite{gray_edge} & 7.24 & 6.21 & 6.48 & 1.98 & 14.19 & 32.33 & 0.015 \\
+Bright Pixels (top 5\%)~\cite{bright_pixels} & \textbf{4.43} & \textbf{2.81} & \textbf{3.26} & \textit{0.70} & 10.85 & 32.06 & 0.026 \\
+PCA Bright \& Dark Pixels (0.5\%)~\cite{cheng2014illuminant} & 4.93 & \textit{3.02} & \textit{3.47} & 0.76 & 12.38 & \textit{30.01} & 0.027 \\
+Grey Pixels~\cite{yangGrayPixels} & \textit{4.53} & 3.40 & 3.70 & 0.72 & \textbf{10.25} & 30.72 & 0.031 \\
+Grayness Index~\cite{qianFindingGrayPixels} & 6.78 & 5.19 & 5.58 & 1.16 & 15.01 & 32.77 & \textit{0.013} \\
+Fast White Balance~\cite{fast_wb_greyness} & 4.79 & 3.52 & 3.90 & \textbf{0.69} & 10.88 & 32.09 & 0.032 \\
+\midrule
+\multicolumn{8}{@{}l}{\textbf{NUS 8-Camera~\cite{cheng2014illuminant} ($N=1736$)}} \\
+\midrule
+Gray World~\cite{gray_world} & 5.40 & 4.22 & 4.46 & 1.14 & 11.77 & 24.69 & 0.081 \\
+White Patch (Max-RGB)~\cite{white_patch} & 13.19 & 16.46 & 14.45 & 2.41 & 21.42 & 33.76 & 0.182 \\
+Shades of Gray ($p=6$)~\cite{shades_of_gray} & 6.42 & 5.19 & 5.64 & 1.46 & 13.25 & 25.54 & \textbf{0.026} \\
+Shades of Gray ($p=3$)~\cite{shades_of_gray} & 5.15 & 4.25 & 4.51 & 1.23 & 10.60 & \textbf{23.43} & 0.040 \\
+Gray Edge (1st order)~\cite{gray_edge} & 5.09 & 4.30 & 4.52 & 1.61 & \textit{9.90} & 25.77 & 0.039 \\
+Bright Pixels (top 5\%)~\cite{bright_pixels} & \textit{4.37} & \textit{3.18} & \textit{3.40} & \textit{0.82} & 10.09 & 27.44 & 0.047 \\
+PCA Bright \& Dark Pixels (0.5\%)~\cite{cheng2014illuminant} & \textbf{3.72} & \textbf{2.53} & \textbf{2.82} & \textbf{0.73} & \textbf{8.62} & 27.15 & 0.044 \\
+Grey Pixels~\cite{yangGrayPixels} & 4.63 & 3.34 & 3.76 & 0.95 & 10.47 & \textit{24.25} & 0.037 \\
+Grayness Index~\cite{qianFindingGrayPixels} & 5.45 & 3.90 & 4.29 & 1.09 & 12.46 & 29.43 & 0.050 \\
+Fast White Balance~\cite{fast_wb_greyness} & 5.41 & 4.25 & 4.49 & 1.14 & 11.81 & 24.70 & \textit{0.032} \\
+\midrule
+\multicolumn{8}{@{}l}{\textbf{NUS 8-Camera (extended)~\cite{cheng2014illuminant} ($N=1853$)}} \\
+\midrule
+Gray World~\cite{gray_world} & 5.42 & 4.25 & 4.50 & 1.15 & 11.80 & 24.69 & 0.081 \\
+White Patch (Max-RGB)~\cite{white_patch} & 13.29 & 16.55 & 14.54 & 2.49 & 21.40 & 33.76 & 0.182 \\
+Shades of Gray ($p=6$)~\cite{shades_of_gray} & 6.51 & 5.33 & 5.75 & 1.51 & 13.31 & 25.54 & \textbf{0.026} \\
+Shades of Gray ($p=3$)~\cite{shades_of_gray} & 5.21 & 4.33 & 4.60 & 1.27 & 10.67 & \textbf{23.43} & 0.040 \\
+Gray Edge (1st order)~\cite{gray_edge} & 5.12 & 4.33 & 4.56 & 1.61 & \textit{9.97} & 25.77 & 0.039 \\
+Bright Pixels (top 5\%)~\cite{bright_pixels} & \textit{4.42} & \textit{3.19} & \textit{3.43} & \textit{0.84} & 10.17 & 27.44 & 0.047 \\
+PCA Bright \& Dark Pixels (0.5\%)~\cite{cheng2014illuminant} & \textbf{3.80} & \textbf{2.65} & \textbf{2.92} & \textbf{0.75} & \textbf{8.79} & 27.15 & 0.044 \\
+Grey Pixels~\cite{yangGrayPixels} & 4.67 & 3.35 & 3.78 & 0.96 & 10.56 & \textit{24.25} & 0.037 \\
+Grayness Index~\cite{qianFindingGrayPixels} & 5.49 & 3.90 & 4.32 & 1.10 & 12.54 & 29.43 & 0.050 \\
+Fast White Balance~\cite{fast_wb_greyness} & 5.44 & 4.29 & 4.52 & 1.14 & 11.83 & 24.70 & \textit{0.032} \\
+\midrule
+\multicolumn{8}{@{}l}{\textbf{LSMI~\cite{kim2021lsmi} ($N=3396$)}} \\
+\midrule
+Gray World~\cite{gray_world} & 5.50 & 4.32 & 4.57 & 1.32 & 11.72 & 38.84 & 0.043 \\
+White Patch (Max-RGB)~\cite{white_patch} & 12.57 & 14.99 & 13.49 & 3.28 & 19.84 & \textit{36.19} & \textbf{0.000} \\
+Shades of Gray ($p=6$)~\cite{shades_of_gray} & 8.22 & 7.69 & 7.82 & 1.50 & 15.90 & 36.48 & \textit{0.010} \\
+Shades of Gray ($p=3$)~\cite{shades_of_gray} & 6.70 & 5.36 & 5.84 & 1.34 & 14.02 & 36.59 & 0.026 \\
+Gray Edge (1st order)~\cite{gray_edge} & 7.39 & 6.40 & 6.58 & 2.97 & 13.61 & \textbf{35.49} & 0.209 \\
+Bright Pixels (top 5\%)~\cite{bright_pixels} & \textbf{4.06} & \textbf{2.65} & \textbf{2.91} & \textbf{0.74} & \textbf{9.90} & 37.40 & 0.030 \\
+PCA Bright \& Dark Pixels (0.5\%)~\cite{cheng2014illuminant} & \textit{4.28} & \textit{2.95} & \textit{3.22} & \textit{0.81} & \textit{10.09} & 37.84 & 0.032 \\
+Grey Pixels~\cite{yangGrayPixels} & 4.58 & 3.27 & 3.48 & 0.93 & 10.57 & 38.26 & 0.049 \\
+Grayness Index~\cite{qianFindingGrayPixels} & 5.26 & 3.95 & 4.21 & 1.10 & 11.72 & 38.34 & 0.032 \\
+Fast White Balance~\cite{fast_wb_greyness} & 5.49 & 4.29 & 4.56 & 1.27 & 11.80 & 38.97 & 0.047 \\
+\end{longtable}
+\endgroup
+
+\begingroup
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{6.8cm}rrrrrrr@{}}
+\caption{Recovery $\Delta E_{2000}$ of the global illumination estimation algorithms. Within each dataset the lowest error per column is shown in bold and the second lowest in italics; where the two coincide at the reported precision, both are shown in bold.}
+\label{tab:global_recovery_delta_e_2000} \\
+\toprule
+Method & Mean & Median & Tri- & Best & Worst & Max & Min \\
+ &  &  & mean & 25\% & 25\% &  &  \\
+\endfirsthead
+\multicolumn{8}{@{}l}{\textit{Table~\thetable{} -- continued from the previous page}} \\
+\toprule
+Method & Mean & Median & Tri- & Best & Worst & Max & Min \\
+ &  &  & mean & 25\% & 25\% &  &  \\
+\endhead
+\midrule
+\multicolumn{8}{r@{}}{\textit{continued on the next page}} \\
+\endfoot
+\bottomrule
+\endlastfoot
+\midrule
+\multicolumn{8}{@{}l}{\textbf{Shi--Gehler ColorChecker~\cite{gehler2008bayesian,shi2010reprocessed} ($N=568$)}} \\
+\midrule
+Gray World~\cite{gray_world} & 4.38 & 3.30 & 3.61 & 0.90 & 9.63 & 21.93 & \textit{0.023} \\
+White Patch (Max-RGB)~\cite{white_patch} & 11.71 & 8.57 & 10.39 & 1.46 & 24.11 & 56.76 & 0.125 \\
+Shades of Gray ($p=6$)~\cite{shades_of_gray} & 6.27 & 4.14 & 5.00 & 0.74 & 15.01 & 41.86 & 0.034 \\
+Shades of Gray ($p=3$)~\cite{shades_of_gray} & 4.19 & 2.79 & 3.24 & 0.58 & 10.03 & 21.37 & 0.047 \\
+Gray Edge (1st order)~\cite{gray_edge} & 4.41 & 3.80 & 3.93 & 1.71 & \textit{8.19} & \textbf{15.92} & 0.258 \\
+Bright Pixels (top 5\%)~\cite{bright_pixels} & \textbf{3.21} & \textbf{2.02} & \textbf{2.31} & \textbf{0.45} & \textbf{7.87} & 22.66 & 0.064 \\
+PCA Bright \& Dark Pixels (0.5\%)~\cite{cheng2014illuminant} & \textit{3.54} & \textit{2.13} & \textit{2.42} & \textit{0.50} & 8.92 & 22.66 & \textbf{0.017} \\
+Grey Pixels~\cite{yangGrayPixels} & 4.14 & 3.28 & 3.51 & 1.07 & 8.63 & \textit{17.74} & 0.119 \\
+Grayness Index~\cite{qianFindingGrayPixels} & 4.66 & 3.91 & 4.04 & 0.94 & 9.72 & 19.30 & 0.078 \\
+Fast White Balance~\cite{fast_wb_greyness} & 4.36 & 3.36 & 3.61 & 0.87 & 9.62 & 21.92 & 0.033 \\
+\midrule
+\multicolumn{8}{@{}l}{\textbf{Cube++~\cite{ershov2020cube} ($N=4866$)}} \\
+\midrule
+Gray World~\cite{gray_world} & 3.34 & 2.40 & 2.68 & 0.50 & \textit{7.68} & 44.65 & \textbf{0.007} \\
+White Patch (Max-RGB)~\cite{white_patch} & 15.47 & 19.43 & 16.42 & 1.57 & 26.40 & 71.56 & 0.032 \\
+Shades of Gray ($p=6$)~\cite{shades_of_gray} & 6.43 & 4.37 & 5.09 & 0.65 & 15.45 & 35.66 & 0.027 \\
+Shades of Gray ($p=3$)~\cite{shades_of_gray} & 3.46 & 2.25 & 2.50 & 0.48 & 8.57 & \textit{31.37} & 0.025 \\
+Gray Edge (1st order)~\cite{gray_edge} & 5.55 & 4.12 & 4.42 & 1.36 & 12.25 & 52.22 & 0.009 \\
+Bright Pixels (top 5\%)~\cite{bright_pixels} & 3.41 & \textbf{2.00} & \textbf{2.32} & \textit{0.48} & 8.78 & 40.56 & 0.022 \\
+PCA Bright \& Dark Pixels (0.5\%)~\cite{cheng2014illuminant} & 4.19 & \textit{2.07} & \textit{2.47} & 0.53 & 11.62 & \textbf{24.83} & 0.025 \\
+Grey Pixels~\cite{yangGrayPixels} & \textbf{3.17} & 2.33 & 2.55 & 0.51 & \textbf{7.22} & 39.48 & 0.013 \\
+Grayness Index~\cite{qianFindingGrayPixels} & 5.15 & 3.57 & 3.83 & 0.80 & 12.31 & 42.63 & \textbf{0.007} \\
+Fast White Balance~\cite{fast_wb_greyness} & \textit{3.34} & 2.39 & 2.67 & \textbf{0.47} & 7.69 & 44.64 & 0.036 \\
+\midrule
+\multicolumn{8}{@{}l}{\textbf{NUS 8-Camera~\cite{cheng2014illuminant} ($N=1736$)}} \\
+\midrule
+Gray World~\cite{gray_world} & 3.49 & 2.60 & 2.82 & 0.75 & 7.74 & 20.66 & 0.062 \\
+White Patch (Max-RGB)~\cite{white_patch} & 14.84 & 19.98 & 16.81 & 1.76 & 24.26 & 51.17 & 0.129 \\
+Shades of Gray ($p=6$)~\cite{shades_of_gray} & 5.19 & 3.60 & 4.27 & 1.03 & 11.64 & 21.57 & \textit{0.020} \\
+Shades of Gray ($p=3$)~\cite{shades_of_gray} & 3.71 & 2.88 & 3.08 & 0.84 & 8.00 & 18.40 & 0.035 \\
+Gray Edge (1st order)~\cite{gray_edge} & 3.50 & 2.87 & 3.05 & 1.07 & 6.96 & 17.61 & 0.022 \\
+Bright Pixels (top 5\%)~\cite{bright_pixels} & \textit{2.75} & \textit{2.04} & \textit{2.17} & \textit{0.55} & \textit{6.23} & \textbf{15.46} & 0.023 \\
+PCA Bright \& Dark Pixels (0.5\%)~\cite{cheng2014illuminant} & \textbf{2.40} & \textbf{1.75} & \textbf{1.89} & \textbf{0.50} & \textbf{5.44} & 17.30 & 0.037 \\
+Grey Pixels~\cite{yangGrayPixels} & 2.93 & 2.12 & 2.36 & 0.62 & 6.62 & \textit{15.82} & 0.025 \\
+Grayness Index~\cite{qianFindingGrayPixels} & 3.61 & 2.43 & 2.75 & 0.69 & 8.54 & 34.31 & 0.039 \\
+Fast White Balance~\cite{fast_wb_greyness} & 3.51 & 2.65 & 2.86 & 0.74 & 7.78 & 20.45 & \textbf{0.015} \\
+\midrule
+\multicolumn{8}{@{}l}{\textbf{NUS 8-Camera (extended)~\cite{cheng2014illuminant} ($N=1853$)}} \\
+\midrule
+Gray World~\cite{gray_world} & 3.54 & 2.67 & 2.88 & 0.76 & 7.83 & 20.66 & 0.062 \\
+White Patch (Max-RGB)~\cite{white_patch} & 15.01 & 20.53 & 17.16 & 1.84 & 24.24 & 51.17 & 0.129 \\
+Shades of Gray ($p=6$)~\cite{shades_of_gray} & 5.30 & 3.76 & 4.41 & 1.06 & 11.76 & 21.57 & \textit{0.020} \\
+Shades of Gray ($p=3$)~\cite{shades_of_gray} & 3.79 & 2.94 & 3.17 & 0.87 & 8.14 & 20.50 & 0.035 \\
+Gray Edge (1st order)~\cite{gray_edge} & 3.54 & 2.90 & 3.08 & 1.08 & 7.04 & 17.61 & 0.022 \\
+Bright Pixels (top 5\%)~\cite{bright_pixels} & \textit{2.79} & \textit{2.05} & \textit{2.20} & \textit{0.56} & \textit{6.31} & \textbf{15.46} & 0.023 \\
+PCA Bright \& Dark Pixels (0.5\%)~\cite{cheng2014illuminant} & \textbf{2.47} & \textbf{1.79} & \textbf{1.94} & \textbf{0.51} & \textbf{5.59} & 17.30 & 0.037 \\
+Grey Pixels~\cite{yangGrayPixels} & 2.96 & 2.14 & 2.39 & 0.62 & 6.69 & \textit{15.82} & 0.025 \\
+Grayness Index~\cite{qianFindingGrayPixels} & 3.63 & 2.44 & 2.76 & 0.70 & 8.57 & 34.31 & 0.039 \\
+Fast White Balance~\cite{fast_wb_greyness} & 3.55 & 2.69 & 2.90 & 0.75 & 7.86 & 20.45 & \textbf{0.015} \\
+\midrule
+\multicolumn{8}{@{}l}{\textbf{LSMI~\cite{kim2021lsmi} ($N=3396$)}} \\
+\midrule
+Gray World~\cite{gray_world} & 3.88 & 2.99 & 3.16 & 0.90 & 8.41 & 32.87 & 0.025 \\
+White Patch (Max-RGB)~\cite{white_patch} & 14.85 & 19.65 & 16.77 & 2.52 & 23.68 & 47.18 & \textbf{0.000} \\
+Shades of Gray ($p=6$)~\cite{shades_of_gray} & 8.10 & 6.14 & 7.05 & 1.10 & 17.57 & \textbf{29.53} & \textit{0.004} \\
+Shades of Gray ($p=3$)~\cite{shades_of_gray} & 5.96 & 3.99 & 4.73 & 0.95 & 13.83 & 29.74 & 0.014 \\
+Gray Edge (1st order)~\cite{gray_edge} & 6.62 & 4.91 & 5.25 & 1.94 & 14.30 & 56.04 & 0.146 \\
+Bright Pixels (top 5\%)~\cite{bright_pixels} & \textbf{2.78} & \textbf{1.86} & \textbf{2.00} & \textbf{0.54} & \textbf{6.68} & 30.94 & 0.035 \\
+PCA Bright \& Dark Pixels (0.5\%)~\cite{cheng2014illuminant} & \textit{2.98} & \textit{2.10} & \textit{2.26} & \textit{0.59} & \textit{6.92} & \textbf{29.53} & 0.021 \\
+Grey Pixels~\cite{yangGrayPixels} & 3.06 & 2.21 & 2.31 & 0.64 & 7.05 & 31.75 & 0.028 \\
+Grayness Index~\cite{qianFindingGrayPixels} & 3.56 & 2.62 & 2.74 & 0.75 & 8.12 & 37.18 & 0.023 \\
+Fast White Balance~\cite{fast_wb_greyness} & 3.87 & 2.97 & 3.16 & 0.88 & 8.44 & 32.95 & 0.028 \\
+\end{longtable}
+\endgroup
+
+\begingroup
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{6.8cm}rrrrrrr@{}}
+\caption{Reproduction $\Delta E_{2000}$ of the global illumination estimation algorithms. Within each dataset the lowest error per column is shown in bold and the second lowest in italics; where the two coincide at the reported precision, both are shown in bold.}
+\label{tab:global_reproduction_delta_e_2000} \\
+\toprule
+Method & Mean & Median & Tri- & Best & Worst & Max & Min \\
+ &  &  & mean & 25\% & 25\% &  &  \\
+\endfirsthead
+\multicolumn{8}{@{}l}{\textit{Table~\thetable{} -- continued from the previous page}} \\
+\toprule
+Method & Mean & Median & Tri- & Best & Worst & Max & Min \\
+ &  &  & mean & 25\% & 25\% &  &  \\
+\endhead
+\midrule
+\multicolumn{8}{r@{}}{\textit{continued on the next page}} \\
+\endfoot
+\bottomrule
+\endlastfoot
+\midrule
+\multicolumn{8}{@{}l}{\textbf{Shi--Gehler ColorChecker~\cite{gehler2008bayesian,shi2010reprocessed} ($N=568$)}} \\
+\midrule
+Gray World~\cite{gray_world} & 7.84 & 6.71 & 7.00 & 2.28 & 15.17 & 25.74 & \textbf{0.050} \\
+White Patch (Max-RGB)~\cite{white_patch} & 13.81 & 14.70 & 14.30 & 3.42 & 22.93 & 25.42 & 0.539 \\
+Shades of Gray ($p=6$)~\cite{shades_of_gray} & 9.92 & 8.56 & 9.22 & 1.75 & 19.86 & \textit{24.71} & 0.084 \\
+Shades of Gray ($p=3$)~\cite{shades_of_gray} & 7.62 & 5.97 & 6.52 & 1.39 & 16.19 & 25.66 & 0.114 \\
+Gray Edge (1st order)~\cite{gray_edge} & 8.94 & 8.27 & 8.49 & 4.41 & 14.42 & \textbf{21.93} & 0.472 \\
+Bright Pixels (top 5\%)~\cite{bright_pixels} & \textbf{5.82} & \textbf{4.43} & \textbf{4.82} & \textbf{1.14} & \textbf{12.95} & 31.45 & 0.179 \\
+PCA Bright \& Dark Pixels (0.5\%)~\cite{cheng2014illuminant} & \textit{6.29} & \textit{4.63} & \textit{5.07} & \textit{1.18} & 14.22 & 31.31 & \textit{0.072} \\
+Grey Pixels~\cite{yangGrayPixels} & 7.45 & 6.43 & 6.71 & 2.68 & \textit{13.84} & 25.36 & 0.328 \\
+Grayness Index~\cite{qianFindingGrayPixels} & 8.14 & 7.40 & 7.53 & 2.57 & 15.28 & 28.56 & 0.200 \\
+Fast White Balance~\cite{fast_wb_greyness} & 7.79 & 6.72 & 6.96 & 2.21 & 15.11 & 25.63 & 0.108 \\
+\midrule
+\multicolumn{8}{@{}l}{\textbf{Cube++~\cite{ershov2020cube} ($N=4866$)}} \\
+\midrule
+Gray World~\cite{gray_world} & 6.43 & 5.48 & 5.74 & 1.44 & \textit{13.06} & 25.85 & \textbf{0.016} \\
+White Patch (Max-RGB)~\cite{white_patch} & 16.80 & 21.69 & 18.76 & 3.83 & 24.11 & 30.24 & 0.144 \\
+Shades of Gray ($p=6$)~\cite{shades_of_gray} & 11.03 & 10.46 & 10.74 & 1.74 & 21.23 & 27.14 & 0.100 \\
+Shades of Gray ($p=3$)~\cite{shades_of_gray} & 6.88 & 5.46 & 5.80 & 1.41 & 14.76 & 26.66 & 0.087 \\
+Gray Edge (1st order)~\cite{gray_edge} & 10.62 & 9.67 & 10.00 & 3.76 & 19.09 & 27.07 & 0.031 \\
+Bright Pixels (top 5\%)~\cite{bright_pixels} & \textit{6.28} & \textbf{4.59} & \textbf{5.05} & \textit{1.36} & 14.02 & 27.43 & 0.060 \\
+PCA Bright \& Dark Pixels (0.5\%)~\cite{cheng2014illuminant} & 7.43 & 5.33 & 5.92 & 1.52 & 16.83 & \textit{25.48} & 0.083 \\
+Grey Pixels~\cite{yangGrayPixels} & \textbf{5.93} & \textit{4.96} & \textit{5.22} & 1.38 & \textbf{12.06} & \textbf{24.73} & 0.069 \\
+Grayness Index~\cite{qianFindingGrayPixels} & 8.45 & 7.05 & 7.36 & 2.02 & 17.20 & 27.35 & \textit{0.019} \\
+Fast White Balance~\cite{fast_wb_greyness} & 6.41 & 5.45 & 5.72 & \textbf{1.35} & 13.09 & 25.88 & 0.111 \\
+\midrule
+\multicolumn{8}{@{}l}{\textbf{NUS 8-Camera~\cite{cheng2014illuminant} ($N=1736$)}} \\
+\midrule
+Gray World~\cite{gray_world} & 7.39 & 6.31 & 6.63 & 2.24 & 14.24 & 24.83 & 0.208 \\
+White Patch (Max-RGB)~\cite{white_patch} & 17.21 & 22.29 & 19.33 & 4.80 & 24.12 & 27.18 & 0.412 \\
+Shades of Gray ($p=6$)~\cite{shades_of_gray} & 10.50 & 8.95 & 9.87 & 2.82 & 19.74 & 24.65 & 0.087 \\
+Shades of Gray ($p=3$)~\cite{shades_of_gray} & 7.93 & 6.79 & 7.16 & 2.34 & 15.42 & \textbf{23.00} & 0.090 \\
+Gray Edge (1st order)~\cite{gray_edge} & 8.40 & 7.77 & 7.86 & 3.34 & 14.51 & 24.84 & \textit{0.060} \\
+Bright Pixels (top 5\%)~\cite{bright_pixels} & \textit{6.06} & \textit{4.95} & \textit{5.19} & \textit{1.63} & \textit{12.48} & \textit{24.46} & 0.148 \\
+PCA Bright \& Dark Pixels (0.5\%)~\cite{cheng2014illuminant} & \textbf{5.45} & \textbf{4.35} & \textbf{4.63} & \textbf{1.49} & \textbf{11.23} & 24.67 & 0.146 \\
+Grey Pixels~\cite{yangGrayPixels} & 6.45 & 5.16 & 5.64 & 1.86 & 12.95 & 25.25 & 0.070 \\
+Grayness Index~\cite{qianFindingGrayPixels} & 7.57 & 6.15 & 6.53 & 2.11 & 15.53 & 27.82 & 0.171 \\
+Fast White Balance~\cite{fast_wb_greyness} & 7.40 & 6.35 & 6.64 & 2.19 & 14.28 & 24.83 & \textbf{0.051} \\
+\midrule
+\multicolumn{8}{@{}l}{\textbf{NUS 8-Camera (extended)~\cite{cheng2014illuminant} ($N=1853$)}} \\
+\midrule
+Gray World~\cite{gray_world} & 7.43 & 6.39 & 6.69 & 2.25 & 14.30 & 24.83 & 0.208 \\
+White Patch (Max-RGB)~\cite{white_patch} & 17.34 & 22.37 & 19.46 & 4.93 & 24.11 & 27.18 & 0.412 \\
+Shades of Gray ($p=6$)~\cite{shades_of_gray} & 10.65 & 9.27 & 10.08 & 2.89 & 19.79 & 24.65 & 0.087 \\
+Shades of Gray ($p=3$)~\cite{shades_of_gray} & 8.05 & 6.90 & 7.27 & 2.40 & 15.56 & \textbf{23.00} & 0.090 \\
+Gray Edge (1st order)~\cite{gray_edge} & 8.44 & 7.80 & 7.90 & 3.36 & 14.55 & 24.84 & \textit{0.060} \\
+Bright Pixels (top 5\%)~\cite{bright_pixels} & \textit{6.13} & \textit{5.02} & \textit{5.27} & \textit{1.65} & \textit{12.57} & \textit{24.46} & 0.148 \\
+PCA Bright \& Dark Pixels (0.5\%)~\cite{cheng2014illuminant} & \textbf{5.56} & \textbf{4.50} & \textbf{4.75} & \textbf{1.53} & \textbf{11.44} & 24.67 & 0.146 \\
+Grey Pixels~\cite{yangGrayPixels} & 6.50 & 5.23 & 5.68 & 1.87 & 13.04 & 25.25 & 0.070 \\
+Grayness Index~\cite{qianFindingGrayPixels} & 7.62 & 6.16 & 6.58 & 2.14 & 15.60 & 27.82 & 0.171 \\
+Fast White Balance~\cite{fast_wb_greyness} & 7.44 & 6.41 & 6.70 & 2.21 & 14.34 & 24.83 & \textbf{0.051} \\
+\midrule
+\multicolumn{8}{@{}l}{\textbf{LSMI~\cite{kim2021lsmi} ($N=3396$)}} \\
+\midrule
+Gray World~\cite{gray_world} & 7.85 & 7.05 & 7.30 & 2.48 & 14.58 & 28.88 & 0.072 \\
+White Patch (Max-RGB)~\cite{white_patch} & 17.02 & 21.32 & 19.02 & 5.90 & 23.46 & \textbf{26.94} & \textbf{0.000} \\
+Shades of Gray ($p=6$)~\cite{shades_of_gray} & 12.39 & 12.57 & 12.49 & 2.71 & 21.53 & 27.92 & \textit{0.024} \\
+Shades of Gray ($p=3$)~\cite{shades_of_gray} & 10.29 & 9.06 & 9.71 & 2.41 & 19.79 & 27.94 & 0.059 \\
+Gray Edge (1st order)~\cite{gray_edge} & 12.38 & 11.94 & 12.08 & 6.33 & 19.11 & \textit{26.97} & 0.380 \\
+Bright Pixels (top 5\%)~\cite{bright_pixels} & \textbf{5.31} & \textbf{4.22} & \textbf{4.40} & \textbf{1.46} & \textbf{11.17} & 28.20 & 0.071 \\
+PCA Bright \& Dark Pixels (0.5\%)~\cite{cheng2014illuminant} & \textit{5.73} & \textit{4.79} & \textit{4.95} & \textit{1.59} & \textit{11.51} & 29.01 & 0.052 \\
+Grey Pixels~\cite{yangGrayPixels} & 5.82 & 4.92 & 5.05 & 1.71 & 11.62 & 28.69 & 0.110 \\
+Grayness Index~\cite{qianFindingGrayPixels} & 6.73 & 5.66 & 5.89 & 2.02 & 13.30 & 28.83 & 0.070 \\
+Fast White Balance~\cite{fast_wb_greyness} & 7.80 & 7.05 & 7.27 & 2.33 & 14.66 & 28.97 & 0.076 \\
+\end{longtable}
+\endgroup
+
